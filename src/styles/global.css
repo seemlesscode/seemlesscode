@@ -1,0 +1,49 @@
+/* src/styles/global.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Iosevka+Aile&display=swap");
+
+:root {
+  --font-body: "Iosevka Aile", monospace;
+  --color-bg: #fff;
+  --color-text: #111;
+  --color-subtext: #666;
+  --color-accent: #f82;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 16px;
+  padding: 2rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--color-subtext);
+}
