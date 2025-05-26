@@ -1,9 +1,9 @@
 /* src/styles/global.css */
 
-@import url("https://fonts.googleapis.com/css2?family=Iosevka+Aile&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
 
 :root {
-  --font-body: "Iosevka Aile", monospace;
+  --font-body: "Fira Mono", monospace;
   --color-bg: #fff;
   --color-text: #111;
   --color-subtext: #666;
