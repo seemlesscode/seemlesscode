@@ -1,0 +1,62 @@
+---
+const { activePage = "" } = Astro.props;
+---
+
+<aside style="padding: 1rem; border-right: 1px solid #eee; max-width: 250px;">
+  <nav>
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      <!-- 🔹 Site global -->
+      <li style="margin-bottom: 0.75rem;">
+        <a href="/" class={activePage === "home" ? "active" : ""}>Accueil</a>
+      </li>
+      <li style="margin-bottom: 0.75rem;">
+        <a href="/about" class={activePage === "about" ? "active" : ""}>À propos</a>
+      </li>
+      <!-- 🔸 Projet Kallosophia -->
+      <li style="margin-top: 2rem; font-weight: bold;">Kallosophia</li>
+      <li style="margin-left: 0.5rem; margin-top: 0.75rem;">
+        <a href="/kallosophia" class={activePage === "kallosophia/index" ? "active" : ""}>Présentation</a>
+      </li>
+      <li style="margin-left: 0.5rem;">
+        <a href="/kallosophia/ai" class={activePage === "kallosophia/ai" ? "active" : ""}>IA & transparence</a>
+      </li>
+      <li style="margin-left: 0.5rem;">
+        <a href="/kallosophia/concept" class={activePage === "kallosophia/concept" ? "active" : ""}>Concept</a>
+      </li>
+      <li style="margin-left: 0.5rem;">
+        <a href="/kallosophia/project-management" class={activePage === "kallosophia/project-management" ? "active" : ""}>Gestion de projet</a>
+      </li>
+      <li style="margin-left: 0.5rem;">
+        <a href="/kallosophia/design" class={activePage === "kallosophia/design" ? "active" : ""}>Design</a>
+      </li>
+
+      <li style="margin-top: 1rem; font-weight: bold; margin-left: 0.5rem;">Développement</li>
+      <li style="margin-left: 1.5rem;">
+        <a href="/kallosophia/dev" class={activePage === "kallosophia/dev/index" ? "active" : ""}>Vue d'ensemble</a>
+      </li>
+      <li style="margin-left: 1.5rem;">
+        <a href="/kallosophia/dev/api" class={activePage === "kallosophia/dev/api" ? "active" : ""}>API</a>
+      </li>
+      <li style="margin-left: 1.5rem;">
+        <a href="/kallosophia/dev/front" class={activePage === "kallosophia/dev/front" ? "active" : ""}>Frontend</a>
+      </li>
+      <li style="margin-left: 1.5rem;">
+        <a href="/kallosophia/dev/deploy" class={activePage === "kallosophia/dev/deploy" ? "active" : ""}>Déploiement</a>
+      </li>
+    </ul>
+  </nav>
+
+  <style>
+    a {
+      text-decoration: none;
+      color: var(--color-text);
+    }
+    a.active {
+      font-weight: bold;
+      color: var(--color-accent);
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</aside>

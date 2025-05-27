@@ -1,9 +1,10 @@
 ---
-import SEO from '@/components/SEO.astro'
-const title = "Index · Kallosophia"
-const description = "Page index du projet Kallosophia"
+import WithSidebar from '@/layouts/WithSidebar.astro'
+const title = "Index · Kallosophia · dev"
+const description = "Page index du dev de Kallosophia"
 ---
-<SEO title={title} description={description} />
 
-<h1>Index</h1>
-<p>Contenu à venir…</p>
+<WithSidebar title={title} description={description} activePage="kallosophia/dev/index">
+  <h1>Index</h1>
+  <p>Contenu à venir…</p> 
+</WithSidebar>
