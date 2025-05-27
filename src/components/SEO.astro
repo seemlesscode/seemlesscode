@@ -1,22 +1,50 @@
 ---
-const { title, description } = Astro.props;
+interface SEOProps {
+  title?: string;
+  description?: string;
+  lang?: "en" | "fr";
+  alternates?: Record<string, string>;
+}
+
+const {
+  title = "Seemless Code",
+  description = "Freelance dev showcase site for Tarek Dinkespiler",
+  lang = "en",
+  alternates = {}
+}: SEOProps = Astro.props;
+
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="language" content={lang} />
+
+<!-- SEO: Open Graph -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
+<meta property="og:locale" content={lang === "fr" ? "fr_FR" : "en_US"} />
 <meta property="og:type" content="website" />
+
+<!-- SEO: Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+
+<!-- SEO: internationalisation -->
+{Object.entries(alternates).map(([code, url]) => (
+  <link rel="alternate" hreflang={code} href={url} />
+))}
+<link rel="alternate" hreflang="x-default" href={alternates["en"] ?? "/en/"} />
+
 <script type="application/ld+json">
-{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Tarek Dinkespiler",
-  "jobTitle": "Développeur Web Freelance",
-  "url": "https://seemlesscode.com",
-  "sameAs": [
-    "https://github.com/seemlesscode",
-    "https://www.linkedin.com/in/tarek-dinkespiler/"
-  ]
-})}
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tarek Dinkespiler",
+    "jobTitle": "Développeur Web Freelance",
+    "url": "https://seemlesscode.com",
+    "sameAs": [
+      "https://github.com/seemlesscode",
+      "https://www.linkedin.com/in/tarek-dinkespiler/"
+    ]
+  })}
 </script>

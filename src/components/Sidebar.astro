@@ -1,48 +1,79 @@
 ---
-const { activePage = "" } = Astro.props;
+interface Props {
+  lang?: "en" | "fr";
+  activePage?: string;
+}
+
+const {
+  lang = "en",
+  activePage = "",
+}: Props = Astro.props;
+
+const t = {
+  en: {
+    site: {
+      home: "Home",
+      about: "About",
+    },
+    kallosophia: {
+      title: "Kallosophia",
+      overview: "Overview",
+      ai: "AI & Transparency",
+      concept: "Concept",
+      project: "Project Management",
+      design: "Design",
+      dev: "Development",
+      devIndex: "Overview",
+      api: "API",
+      front: "Frontend",
+      deploy: "Deployment",
+    },
+  },
+  fr: {
+    site: {
+      home: "Accueil",
+      about: "À propos",
+    },
+    kallosophia: {
+      title: "Kallosophia",
+      overview: "Présentation",
+      ai: "IA & transparence",
+      concept: "Concept",
+      project: "Gestion de projet",
+      design: "Design",
+      dev: "Développement",
+      devIndex: "Vue d'ensemble",
+      api: "API",
+      front: "Frontend",
+      deploy: "Déploiement",
+    },
+  },
+}[lang];
+
+const base = `/${lang}`;
+const path = (sub: string) => `${base}${sub}`;
 ---
 
 <aside style="padding: 1rem; border-right: 1px solid #eee; max-width: 250px;">
   <nav>
     <ul style="list-style: none; padding: 0; margin: 0;">
-      <!-- 🔹 Site global -->
-      <li style="margin-bottom: 0.75rem;">
-        <a href="/" class={activePage === "home" ? "active" : ""}>Accueil</a>
-      </li>
-      <li style="margin-bottom: 0.75rem;">
-        <a href="/about" class={activePage === "about" ? "active" : ""}>À propos</a>
-      </li>
-      <!-- 🔸 Projet Kallosophia -->
-      <li style="margin-top: 2rem; font-weight: bold;">Kallosophia</li>
-      <li style="margin-left: 0.5rem; margin-top: 0.75rem;">
-        <a href="/kallosophia" class={activePage === "kallosophia/index" ? "active" : ""}>Présentation</a>
-      </li>
-      <li style="margin-left: 0.5rem;">
-        <a href="/kallosophia/ai" class={activePage === "kallosophia/ai" ? "active" : ""}>IA & transparence</a>
-      </li>
-      <li style="margin-left: 0.5rem;">
-        <a href="/kallosophia/concept" class={activePage === "kallosophia/concept" ? "active" : ""}>Concept</a>
-      </li>
-      <li style="margin-left: 0.5rem;">
-        <a href="/kallosophia/project-management" class={activePage === "kallosophia/project-management" ? "active" : ""}>Gestion de projet</a>
-      </li>
-      <li style="margin-left: 0.5rem;">
-        <a href="/kallosophia/design" class={activePage === "kallosophia/design" ? "active" : ""}>Design</a>
-      </li>
+      <!-- Site global -->
+      <li><a href={path("/")} class={activePage === "home" ? "active" : ""}>{t.site.home}</a></li>
+      <li><a href={path("/about")} class={activePage === "about" ? "active" : ""}>{t.site.about}</a></li>
 
-      <li style="margin-top: 1rem; font-weight: bold; margin-left: 0.5rem;">Développement</li>
-      <li style="margin-left: 1.5rem;">
-        <a href="/kallosophia/dev" class={activePage === "kallosophia/dev/index" ? "active" : ""}>Vue d'ensemble</a>
-      </li>
-      <li style="margin-left: 1.5rem;">
-        <a href="/kallosophia/dev/api" class={activePage === "kallosophia/dev/api" ? "active" : ""}>API</a>
-      </li>
-      <li style="margin-left: 1.5rem;">
-        <a href="/kallosophia/dev/front" class={activePage === "kallosophia/dev/front" ? "active" : ""}>Frontend</a>
-      </li>
-      <li style="margin-left: 1.5rem;">
-        <a href="/kallosophia/dev/deploy" class={activePage === "kallosophia/dev/deploy" ? "active" : ""}>Déploiement</a>
-      </li>
+      <!-- Kallosophia -->
+      <li style="margin-top: 2rem; font-weight: bold;">{t.kallosophia.title}</li>
+      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia")} class={activePage === "kallosophia/index" ? "active" : ""}>{t.kallosophia.overview}</a></li>
+      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia/ai")} class={activePage === "kallosophia/ai" ? "active" : ""}>{t.kallosophia.ai}</a></li>
+      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia/concept")} class={activePage === "kallosophia/concept" ? "active" : ""}>{t.kallosophia.concept}</a></li>
+      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia/project-management")} class={activePage === "kallosophia/project-management" ? "active" : ""}>{t.kallosophia.project}</a></li>
+      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia/design")} class={activePage === "kallosophia/design" ? "active" : ""}>{t.kallosophia.design}</a></li>
+
+      <li style="margin-top: 1rem; font-weight: bold; margin-left: 0.5rem;">{t.kallosophia.dev}</li>
+      <li style="margin-left: 1.5rem;"><a href={path("/kallosophia/dev")} class={activePage === "kallosophia/dev/index" ? "active" : ""}>{t.kallosophia.devIndex}</a></li>
+      <li style="margin-left: 1.5rem;"><a href={path("/kallosophia/dev/api")} class={activePage === "kallosophia/dev/api" ? "active" : ""}>{t.kallosophia.api}</a></li>
+      <li style="margin-left: 1.5rem;"><a href={path("/kallosophia/dev/front")} class={activePage === "kallosophia/dev/front" ? "active" : ""}>{t.kallosophia.front}</a></li>
+      <li style="margin-left: 1.5rem;"><a href={path("/kallosophia/dev/deploy")} class={activePage === "kallosophia/dev/deploy" ? "active" : ""}>{t.kallosophia.deploy}</a></li>
     </ul>
   </nav>
 

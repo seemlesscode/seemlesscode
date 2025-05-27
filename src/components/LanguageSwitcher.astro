@@ -1,0 +1,16 @@
+---
+interface Props {
+  lang: "en" | "fr";
+  alternates: Record<string, string>;
+}
+
+const { lang, alternates }: Props = Astro.props;
+
+const otherLang = lang === "fr" ? "en" : "fr";
+const otherHref = alternates[otherLang] ?? `/${otherLang}/`;
+const label = lang === "fr" ? "En" : "Fr";
+---
+
+<a href={otherHref} lang={otherLang} style="text-decoration: none; font-weight: 500; padding: 0.25rem 0.5rem;">
+  {label}
+</a>

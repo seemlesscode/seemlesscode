@@ -1,0 +1,17 @@
+---
+import LanguageSwitcher from '@/components/LanguageSwitcher.astro';
+
+interface Props {
+  lang: "en" | "fr";
+  alternates: Record<string, string>;
+}
+
+const { lang, alternates }: Props = Astro.props;
+---
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; border-bottom: 1px solid #eee;">
+  <div style="font-weight: bold; font-size: 1.2rem;">
+    Seemless Code
+  </div>
+  <LanguageSwitcher lang={lang} alternates={alternates} />
+</header>
