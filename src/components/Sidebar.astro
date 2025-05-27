@@ -54,40 +54,24 @@ const base = `/${lang}`;
 const path = (sub: string) => `${base}${sub}`;
 ---
 
-<aside style="padding: 1rem; border-right: 1px solid #eee; max-width: 250px;">
+<aside class="sidebar">
   <nav>
-    <ul style="list-style: none; padding: 0; margin: 0;">
-      <!-- Site global -->
-      <li><a href={path("/")} class={activePage === "home" ? "active" : ""}>{t.site.home}</a></li>
-      <li><a href={path("/about")} class={activePage === "about" ? "active" : ""}>{t.site.about}</a></li>
+    <ul>
+      <li><a href={path("/")} class={`nav-link ${activePage === "home" ? "active" : ""}`}>{t.site.home}</a></li>
+      <li><a href={path("/about")} class={`nav-link ${activePage === "about" ? "active" : ""}`}>{t.site.about}</a></li>
 
-      <!-- Kallosophia -->
-      <li style="margin-top: 2rem; font-weight: bold;">{t.kallosophia.title}</li>
-      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia")} class={activePage === "kallosophia/index" ? "active" : ""}>{t.kallosophia.overview}</a></li>
-      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia/ai")} class={activePage === "kallosophia/ai" ? "active" : ""}>{t.kallosophia.ai}</a></li>
-      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia/concept")} class={activePage === "kallosophia/concept" ? "active" : ""}>{t.kallosophia.concept}</a></li>
-      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia/project-management")} class={activePage === "kallosophia/project-management" ? "active" : ""}>{t.kallosophia.project}</a></li>
-      <li style="margin-left: 0.5rem;"><a href={path("/kallosophia/design")} class={activePage === "kallosophia/design" ? "active" : ""}>{t.kallosophia.design}</a></li>
+      <li class="nav-section">{t.kallosophia.title}</li>
+      <li class="nav-subsection"><a href={path("/kallosophia")} class={`nav-link ${activePage === "kallosophia/index" ? "active" : ""}`}>{t.kallosophia.overview}</a></li>
+      <li class="nav-subsection"><a href={path("/kallosophia/ai")} class={`nav-link ${activePage === "kallosophia/ai" ? "active" : ""}`}>{t.kallosophia.ai}</a></li>
+      <li class="nav-subsection"><a href={path("/kallosophia/concept")} class={`nav-link ${activePage === "kallosophia/concept" ? "active" : ""}`}>{t.kallosophia.concept}</a></li>
+      <li class="nav-subsection"><a href={path("/kallosophia/project-management")} class={`nav-link ${activePage === "kallosophia/project-management" ? "active" : ""}`}>{t.kallosophia.project}</a></li>
+      <li class="nav-subsection"><a href={path("/kallosophia/design")} class={`nav-link ${activePage === "kallosophia/design" ? "active" : ""}`}>{t.kallosophia.design}</a></li>
 
-      <li style="margin-top: 1rem; font-weight: bold; margin-left: 0.5rem;">{t.kallosophia.dev}</li>
-      <li style="margin-left: 1.5rem;"><a href={path("/kallosophia/dev")} class={activePage === "kallosophia/dev/index" ? "active" : ""}>{t.kallosophia.devIndex}</a></li>
-      <li style="margin-left: 1.5rem;"><a href={path("/kallosophia/dev/api")} class={activePage === "kallosophia/dev/api" ? "active" : ""}>{t.kallosophia.api}</a></li>
-      <li style="margin-left: 1.5rem;"><a href={path("/kallosophia/dev/front")} class={activePage === "kallosophia/dev/front" ? "active" : ""}>{t.kallosophia.front}</a></li>
-      <li style="margin-left: 1.5rem;"><a href={path("/kallosophia/dev/deploy")} class={activePage === "kallosophia/dev/deploy" ? "active" : ""}>{t.kallosophia.deploy}</a></li>
+      <li class="nav-subsection nav-section">{t.kallosophia.dev}</li>
+      <li class="nav-subsubsection"><a href={path("/kallosophia/dev")} class={`nav-link ${activePage === "kallosophia/dev/index" ? "active" : ""}`}>{t.kallosophia.devIndex}</a></li>
+      <li class="nav-subsubsection"><a href={path("/kallosophia/dev/api")} class={`nav-link ${activePage === "kallosophia/dev/api" ? "active" : ""}`}>{t.kallosophia.api}</a></li>
+      <li class="nav-subsubsection"><a href={path("/kallosophia/dev/front")} class={`nav-link ${activePage === "kallosophia/dev/front" ? "active" : ""}`}>{t.kallosophia.front}</a></li>
+      <li class="nav-subsubsection"><a href={path("/kallosophia/dev/deploy")} class={`nav-link ${activePage === "kallosophia/dev/deploy" ? "active" : ""}`}>{t.kallosophia.deploy}</a></li>
     </ul>
   </nav>
-
-  <style>
-    a {
-      text-decoration: none;
-      color: var(--color-text);
-    }
-    a.active {
-      font-weight: bold;
-      color: var(--color-accent);
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
 </aside>

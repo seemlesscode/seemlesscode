@@ -1,7 +1,7 @@
 ---
-import Header from '@/components/Header.astro';
-import Sidebar from '@/components/Sidebar.astro';
-import SEO from '@/components/SEO.astro';
+import Header from "@/components/Header.astro";
+import Sidebar from "@/components/Sidebar.astro";
+import SEO from "@/components/SEO.astro";
 
 interface Props {
   lang?: "en" | "fr";
@@ -16,7 +16,7 @@ const {
   title = "Seemless Code",
   description = "",
   activePage = "",
-  alternates = {}
+  alternates = {},
 }: Props = Astro.props;
 ---
 
@@ -24,14 +24,29 @@ const {
   <head>
     <meta charset="UTF-8" />
     <SEO {title} {description} {lang} {alternates} />
+    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
-  <body style="margin: 0; font-family: var(--font-body); background: var(--color-bg); color: var(--color-text);">
-    <Header lang={lang} alternates={alternates} />
-    <div style="display: flex; min-height: calc(100vh - 60px);">
-      <Sidebar lang={lang} activePage={activePage} />
-      <main style="flex: 1; padding: 2rem;">
+  <body>
+    <aside class="drawer">
+      <div id="drawer-toggle" class="drawer-toggle" role="button" tabindex="0" aria-label="Toggle sidebar">
+        <span class="arrow"></span>
+      </div>
+
+      <div class="drawer-content">
+        <Sidebar lang={lang} activePage={activePage} />
+      </div>
+    </aside>
+
+    <div class="content">
+      <Header lang={lang} alternates={alternates} activePage={activePage} />
+      <main>
         <slot />
       </main>
     </div>
+
+    <script type="module">
+      import { setupSidebarToggle } from "/src/scripts/sidebar.ts";
+      setupSidebarToggle();
+    </script>
   </body>
 </html>
