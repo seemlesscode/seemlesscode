@@ -1,5 +1,6 @@
 ---
 import SEO from "@/components/SEO.astro";
+import ThemeClientInit from "@/components/ThemeClientInit";
 import Menu from "@/components/Menu.astro";
 import "@/styles/global.css";
 import "@/styles/page.css";
@@ -21,14 +22,15 @@ const {
 }: Props = Astro.props;
 ---
 
-<html lang={lang} data-theme="dark">
-<!-- <html lang={lang} data-theme="dark" data-primary="#f0f"> -->
+<html lang={lang} data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/scripts/init-theme.js" is:inline></script>
     <SEO {title} {description} {lang} {alternates} {canonical} />
   </head>
   <body>
+    <ThemeClientInit client:load />
     <main>
       <div class="content">
         <div class="scroll-inner">

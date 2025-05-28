@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { settingsData } from './data/settings.astro';
 
 const { title, description, lang, alternates } = settingsData
@@ -20,7 +21,7 @@ const { title, description, lang, alternates } = settingsData
         class={lang === "en" ? "lang-active" : "lang-inactive"}
       >En</a>
     </li>
-    <li>Thème: <strong>Light / Dark / Fun</strong> (to be implemented)</li>
-    <li>Couleur principale: <strong>Option 1 / 2 / 3</strong> (to be implemented)</li>
+
+    <ThemeSwitcher client:load labels={{ theme: "Thème", color: "Couleur", light: "Clair", dark: "Sombre" }}/>
   </ul>
 </BaseLayout>
