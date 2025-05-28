@@ -28,11 +28,15 @@ const {
     <SEO {title} {description} {lang} {alternates} {canonical} />
   </head>
   <body>
-    <main class="content">
-      <slot />
+    <main>
+      <div class="content">
+        <div class="scroll-inner">
+          <slot />
+        </div>
+      </div>
+      <div class="menu-wrapper">
+        <Menu lang={lang} />
+      </div>
     </main>
-    <div class="menu-wrapper">
-      <Menu lang={lang} />
-    </div>
   </body>
 </html>
