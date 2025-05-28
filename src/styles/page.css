@@ -26,3 +26,21 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.lang-active {
+  color: var(--color-primary);
+  text-decoration: none;
+  pointer-events: none;
+  cursor: default;
+}
+
+.lang-inactive {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.lang-inactive:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
