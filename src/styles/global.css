@@ -190,12 +190,13 @@ h1 {
 }
 
 .color-choice[data-active="true"] {
-  border: 2px solid var(--color-text);
+  border: 2px solid var(--color-bg);
   box-shadow: 0 0 0 2px var(--color-primary);
 }
 
 .color-choice:hover {
-  border-color: var(--color-text);
+  border-color: var(--color-bg);
+  box-shadow: 0 0 0 2px var(--color-text);
 }
 
 .theme-options button {
