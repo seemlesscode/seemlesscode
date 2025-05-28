@@ -1,0 +1,14 @@
+---
+import "@/styles/collection.css";
+---
+
+<div class="collection-layout">
+  <aside class="sidebar">
+    <slot name="sidebar" />
+  </aside>
+
+  <main class="markdown-body">
+    <slot name="markdown-title" />
+    <slot name="markdown-body" />
+  </main>
+</div>

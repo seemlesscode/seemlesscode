@@ -1,5 +1,6 @@
 ---
 import SEO from "@/components/SEO.astro";
+import LangClientInit from "@/components/LangClientInit";
 import ThemeClientInit from "@/components/ThemeClientInit";
 import Menu from "@/components/Menu.astro";
 import "@/styles/global.css";
@@ -14,12 +15,14 @@ interface Props {
 }
 
 const {
-  lang = "en",
   title = "Seemless Code",
   description = "",
   alternates = {},
   canonical
 }: Props = Astro.props;
+
+const lang = Astro.props.lang ??
+  (Astro.url.pathname.startsWith("/fr") ? "fr" : "en");
 ---
 
 <html lang={lang} data-theme="light">
@@ -30,7 +33,9 @@ const {
     <SEO {title} {description} {lang} {alternates} {canonical} />
   </head>
   <body>
+    <LangClientInit client:load />
     <ThemeClientInit client:load />
+
     <main>
       <div class="content">
         <div class="scroll-inner">
@@ -41,5 +46,6 @@ const {
         <Menu lang={lang} />
       </div>
     </main>
+
   </body>
 </html>

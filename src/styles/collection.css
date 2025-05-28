@@ -1,0 +1,32 @@
+.collection-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .collection-layout {
+    flex-direction: column;
+  }
+}
+
+.sidebar {
+  min-width: 180px;
+}
+
+.sidebar a {
+  display: block;
+  margin: 0.5rem 0;
+  text-decoration: none;
+  color: #444;
+}
+
+.sidebar a.active {
+  font-weight: bold;
+  color: black;
+}
+
+.markdown-body {
+  line-height: 1.6;
+  font-size: 1rem;
+}

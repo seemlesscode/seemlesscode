@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import LangSwitcher from '@/components/LangSwitcher';
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { settingsData } from './data/settings.astro';
 
@@ -9,20 +10,8 @@ const { title, description, lang, alternates } = settingsData
 <BaseLayout title={title} description={description} lang={lang} alternates={alternates}>
   <h1>{title}</h1>
   <ul>
-    <li>
-      Language:
-      <a
-        href="/fr/parametres"
-        class={lang === "fr" ? "lang-active" : "lang-inactive"}
-      >Fr</a>
-      /
-      <a
-        href="/en/settings"
-        class={lang === "en" ? "lang-active" : "lang-inactive"}
-      >En</a>
-    </li>
+    <LangSwitcher client:load />
+    <ThemeSwitcher client:load labels={{ theme: "Theme", color: "Color", light: "Light", dark: "Dark" }}/>
   </ul>
-
-  <ThemeSwitcher client:load labels={{ theme: "Theme", color: "Color", light: "Light", dark: "Dark" }}/>
 
 </BaseLayout>

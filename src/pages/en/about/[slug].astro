@@ -1,0 +1,43 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TwoColumnLayout from '@/layouts/TwoColumnLayout.astro';
+
+type AboutEntry = CollectionEntry<'about'>;
+
+export async function getStaticPaths() {
+  const entries = await getCollection('about');
+  return entries
+    .filter((entry) => entry.data.lang === 'en')
+    .map((entry) => ({ params: { slug: entry.data.slug } }));
+}
+
+const { slug } = Astro.params;
+const entries: AboutEntry[] = await getCollection('about');
+const currentLang = 'en';
+const localizedEntries = entries.filter((entry) => entry.data.lang === currentLang);
+const currentEntry = localizedEntries.find((entry) => entry.data.slug === slug);
+
+if (!currentEntry) throw new Error(`No data found for the slug: ${slug}`);
+const { Content } = await currentEntry.render();
+---
+
+<BaseLayout>
+  <TwoColumnLayout>
+    <div slot="sidebar">
+      {localizedEntries.map((entry) => (
+        <a
+        href={`/en/about/${entry.data.slug}`}
+        class={entry.data.slug === slug ? 'active' : ''}
+        >
+          {entry.data.title}
+        </a>
+      ))}
+    </div>
+    
+    <h1 slot="markdown-title">{currentEntry.data.title}</h1>
+    <Content slot="markdown-body" entry={currentEntry} />
+
+  </TwoColumnLayout>
+</BaseLayout>
+
