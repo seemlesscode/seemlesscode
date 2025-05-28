@@ -5,7 +5,7 @@ import { aboutData } from './data/about.astro'
 const { title, description, lang, alternates } = aboutData
 ---
 <BaseLayout lang={lang} title={title} description={description} alternates={alternates}>
-    <h1>À propos</h1>
+    <h1>{title}</h1>
 
     <section>
     <h2>Moi</h2>
