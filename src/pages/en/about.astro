@@ -1,10 +1,30 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
-const title = "About · Kallosophia"
-const description = "Page about du projet Kallosophia"
+import { aboutData } from './data/about.astro';
+
+const { title, description, lang, alternates } = aboutData
 ---
 
-<BaseLayout lang="en" title={title} description={description} activePage="about">
-    <h1>À propos</h1>
-    <p>…</p>
+<BaseLayout lang={lang} title={title} description={description} alternates={alternates}>
+    <h1>About</h1>
+
+    <section>
+    <h2>Me</h2>
+    <p>I'm a father living in Brest and a freelance web developer that contributes to the startup nation. I work remotely for French clients but I would love to have an international experience sometime.</p>
+    </section>
+
+    <section>
+    <h2>Career</h2>
+    <ul>
+        <li>Hoggo</li>
+        <li>Trustpair</li>
+        <li>Seyna</li>
+        <li>BlaBlaCar</li>
+    </ul>
+    </section>
+
+    <section>
+    <h2>Projects</h2>
+    <p>Kallosophia is my very first personal project: a museum-themed quiz experience built to combine beauty, playfulness, and education.</p>
+    </section>
 </BaseLayout>

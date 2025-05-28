@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
+
+:root {
+  --font-body: "Fira Mono", monospace;
+  --color-bg: #fff;
+  --color-text: #111;
+  --color-subtext: #ddd;
+  --color-primary: #f82;
+  --color-discreet: #f1f1f1;
+  --transition: 0.3s ease;
+  --circle-size: 36px;
+  --circle-gap: 32px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  height: 100%;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(var(--circle-size) * 3);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: var(--circle-gap);
+  position: relative;
+}
+
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition);
+  font-size: 0.875rem;
+}
+
+.circle {
+  width: var(--circle-size);
+  height: var(--circle-size);
+  border-radius: 50%;
+  border: 2px solid var(--color-subtext);
+  background: var(--color-bg);
+  transition: border var(--transition), background var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle::after {
+  content: "";
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-subtext);
+  transition: background var(--transition);
+}
+
+.menu-button:hover .circle,
+.menu-button:focus .circle {
+  border-color: var(--color-primary);
+}
+
+.menu-button:hover .circle::after,
+.menu-button:focus .circle::after {
+  background: var(--color-primary);
+}
+
+.menu-label {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  opacity: 0;
+  transform: translateY(-0.4rem);
+  transition: opacity var(--transition), transform var(--transition);
+  color: var(--color-primary);
+}
+
+.menu-button:hover .menu-label,
+.menu-button:focus .menu-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-button.settings .circle {
+  border-color: var(--color-discreet);
+}
+
+.menu-button.settings .circle::after {
+  background: var(--color-discreet);
+}
+
+.menu-button.settings:hover .circle,
+.menu-button.settings:focus .circle {
+  border-color: var(--color-primary);
+}
+
+.menu-button.settings:hover .circle::after,
+.menu-button.settings:focus .circle::after {
+  background: var(--color-primary);
+}

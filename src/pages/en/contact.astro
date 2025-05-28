@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { contactData } from './data/contact.astro';
+
+const { title, description, lang, alternates } = contactData
+---
+
+<BaseLayout title={title} description={description} lang={lang} alternates={alternates}>
+  <h1>Contact</h1>
+  <ul>
+    <li><a href="mailto:tarek@seemlesscode.com">tarek@seemlesscode.com</a></li>
+    <li><a href="https://github.com/seemlesscode" target="_blank">GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/tarek-dinkespiler/" target="_blank">LinkedIn</a></li>
+  </ul>
+</BaseLayout>

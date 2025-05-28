@@ -1,22 +1,26 @@
 ---
-interface SEOProps {
+export interface SEOProps {
   title?: string;
   description?: string;
   lang?: "en" | "fr";
   alternates?: Record<string, string>;
+  canonical?: string;
 }
 
 const {
   title = "Seemless Code",
-  description = "Freelance dev showcase site for Tarek Dinkespiler",
+  description = "Seemless Code is the portfolio and studio site of a very adaptable freelance developer offering tailor made contributions to your web projects.",
   lang = "en",
-  alternates = {}
+  alternates = {},
+  canonical
 }: SEOProps = Astro.props;
 
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="language" content={lang} />
+<meta name="author" content="Tarek Dinkespiler" />
+<meta name="robots" content="index, follow" />
 
 <!-- SEO: Open Graph -->
 <meta property="og:title" content={title} />
@@ -28,6 +32,9 @@ const {
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+
+<link rel="canonical" href={ canonical || "https://seemlesscode.com/"} />
+
 
 <!-- SEO: internationalisation -->
 {Object.entries(alternates).map(([code, url]) => (

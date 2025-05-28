@@ -2,9 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro'
 const title = "Seemless Code"
 const description = "Page index de Seemless Code"
+const lang="en"
+const alternates = { fr: "/fr", en: "/en" };
 ---
-
-<BaseLayout lang="en" title={title} description={description} activePage="index">
-  <h1>Seemless Code</h1>
-  <p>Contenu à venir…</p>
-</BaseLayout>
+<BaseLayout lang={lang} title={title} description={description} alternates={alternates}/>

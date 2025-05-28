@@ -1,0 +1,49 @@
+---
+import type { PageDataType } from "@/types/page";
+
+// About
+import { aboutData as aboutDataEn } from "@/pages/en/data/about.astro";
+import { aboutData as aboutDataFr } from "@/pages/fr/data/about.astro";
+
+// Projects
+import { projectsData as projectsDataEn } from "@/pages/en/data/projects.astro";
+import { projectsData as projectsDataFr } from "@/pages/fr/data/projects.astro";
+
+// Contact
+import { contactData as contactDataEn } from "@/pages/en/data/contact.astro";
+import { contactData as contactDataFr } from "@/pages/fr/data/contact.astro";
+
+// Settings
+import { settingsData as settingsDataEn } from "@/pages/en/data/settings.astro";
+import { settingsData as settingsDataFr } from "@/pages/fr/data/settings.astro";
+
+const { lang = "en" } = Astro.props;
+
+type RouteID = "about" | "projects" | "contact" | "settings";
+
+const ids: RouteID[] = ["about", "projects", "contact", "settings"];
+
+type RouteData = Record<RouteID, PageDataType>;
+
+const routeData: RouteData = {
+  about: lang === "fr" ? aboutDataFr : aboutDataEn,
+  projects: lang === "fr" ? projectsDataFr : projectsDataEn,
+  contact: lang === "fr" ? contactDataFr : contactDataEn,
+  settings: lang === "fr" ? settingsDataFr : settingsDataEn,
+};
+
+const routes = ids.map((id) => ({
+  id,
+  label: routeData[id].title,
+  alternate: routeData[id].alternate
+}));
+---
+
+<div class="menu">
+  {routes.map(({ id, label, alternate }) => (
+    <a id={id} href={alternate} class={`menu-button ${id === 'settings' ? 'settings' : ''}`}>
+      <div class="circle" />
+      <span class="menu-label">{label}</span>
+    </a>
+  ))}
+</div>
