@@ -12,6 +12,22 @@
   --circle-gap: 32px;
 }
 
+html[data-theme="dark"] {
+  --color-bg: #111;
+  --color-text: #eee;
+  --color-subtext: #444;
+  --color-primary: #f82;
+  --color-discreet: #222;
+}
+
+html[data-primary="#6f4"] {
+  --color-primary: #6f4;
+}
+
+html[data-primary="#f0f"] {
+  --color-primary: #f0f;
+}
+
 html,
 body {
   margin: 0;
