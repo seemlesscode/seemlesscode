@@ -36,7 +36,7 @@ const { title, description, alternates } = projectsData
     ))}
   </div>
   
-  <h1 slot="markdown-title">{currentEntry.data.title}</h1>
+  <h1 slot="markdown-title"  class="markdown-title">{currentEntry.data.title}</h1>
   <Content slot="markdown-body" entry={currentEntry} />
 
 </CollectionLayout>
