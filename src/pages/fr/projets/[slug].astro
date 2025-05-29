@@ -1,34 +1,34 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import CollectionLayout from '@/layouts/CollectionLayout.astro';
-import { aboutData } from '../data/about.astro';
+import { projectsData } from '../data/projects.astro';
 
-type AboutEntry = CollectionEntry<'about'>;
+type AboutEntry = CollectionEntry<'projets'>;
 
 export async function getStaticPaths() {
-  const entries = await getCollection('about');
+  const entries = await getCollection('projets');
   return entries
-    .filter((entry) => entry.data.lang === 'en')
+    .filter((entry) => entry.data.lang === 'fr')
     .map((entry) => ({ params: { slug: entry.data.slug } }));
 }
 
 const { slug } = Astro.params;
-const entries: AboutEntry[] = await getCollection('about');
-const currentLang = 'en';
+const entries: AboutEntry[] = await getCollection('projets');
+const currentLang = 'fr';
 const localizedEntries = entries.filter((entry) => entry.data.lang === currentLang);
 const currentEntry = localizedEntries.find((entry) => entry.data.slug === slug);
 
 if (!currentEntry) throw new Error(`No data found for the slug: ${slug}`);
 const { Content } = await currentEntry.render();
 
-const { title, description, alternates } = aboutData
+const { title, description, alternates } = projectsData
 ---
 
 <CollectionLayout lang={currentLang} title={title} description={description} alternates={alternates}>
   <div slot="sidebar" class="sidebar-entries">
     {localizedEntries.map((entry) => (
       <a
-      href={`/en/about/${entry.data.slug}`}
+      href={`/fr/projets/${entry.data.slug}`}
       class={entry.data.slug === slug ? 'active' : ''}
       >
         {entry.data.title}

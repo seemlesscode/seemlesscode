@@ -172,6 +172,24 @@ declare module 'astro:content' {
   data: any
 } & { render(): Render[".md"] };
 };
+"projects": {
+"kallosophia.md": {
+	id: "kallosophia.md";
+  slug: "kallosophia";
+  body: string;
+  collection: "projects";
+  data: any
+} & { render(): Render[".md"] };
+};
+"projets": {
+"kallosophia.md": {
+	id: "kallosophia.md";
+  slug: "kallosophia";
+  body: string;
+  collection: "projets";
+  data: any
+} & { render(): Render[".md"] };
+};
 
 	};
 
