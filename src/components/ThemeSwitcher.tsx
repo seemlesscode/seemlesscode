@@ -17,7 +17,7 @@ export default function ThemeSwitcher({ labels }: ThemeSwitcherProps) {
     { label: labels.dark, value: "dark" },
   ];
 
-  const colors = ["#f82", "#6f4", "#f0f", "#0cf"];
+  const colors = ["#f82", "#0e5", "#f0f", "#0cf"];
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function ThemeSwitcher({ labels }: ThemeSwitcherProps) {
           {colors.map((c) => (
             <div
               key={c}
-              class="color-choice"
+              class={`color-choice-${c.substring(1)}`}
               data-active={color === c}
               style={{ backgroundColor: c }}
               onClick={() => updateColor(c)}

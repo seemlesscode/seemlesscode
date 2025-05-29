@@ -4,4 +4,6 @@ title: "Bio"
 lang: "fr"
 ---
 
-Coucou, c'est moi 👋
+<p class="center-container">
+  Coucou, c'est moi 👋
+</p>

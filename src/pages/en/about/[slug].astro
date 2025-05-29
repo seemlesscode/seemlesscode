@@ -1,7 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import TwoColumnLayout from '@/layouts/TwoColumnLayout.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
+import CollectionLayout from '@/layouts/CollectionLayout.astro';
 
 type AboutEntry = CollectionEntry<'about'>;
 
@@ -22,22 +22,20 @@ if (!currentEntry) throw new Error(`No data found for the slug: ${slug}`);
 const { Content } = await currentEntry.render();
 ---
 
-<BaseLayout>
-  <TwoColumnLayout>
-    <div slot="sidebar">
-      {localizedEntries.map((entry) => (
-        <a
-        href={`/en/about/${entry.data.slug}`}
-        class={entry.data.slug === slug ? 'active' : ''}
-        >
-          {entry.data.title}
-        </a>
-      ))}
-    </div>
-    
-    <h1 slot="markdown-title">{currentEntry.data.title}</h1>
-    <Content slot="markdown-body" entry={currentEntry} />
+<CollectionLayout lang={currentLang}>
+  <div slot="sidebar" class="sidebar-entries">
+    {localizedEntries.map((entry) => (
+      <a
+      href={`/en/about/${entry.data.slug}`}
+      class={entry.data.slug === slug ? 'active' : ''}
+      >
+        {entry.data.title}
+      </a>
+    ))}
+  </div>
+  
+  <h1 slot="markdown-title">{currentEntry.data.title}</h1>
+  <Content slot="markdown-body" entry={currentEntry} />
 
-  </TwoColumnLayout>
-</BaseLayout>
+</CollectionLayout>
 

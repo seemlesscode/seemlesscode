@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
 import { projectsData } from './data/projects.astro';
 
 const { title, description, lang, alternates } = projectsData
 ---
 
 
-<BaseLayout title={title} description={description} lang={lang} alternates={alternates}>
+<PageLayout title={title} description={description} lang={lang} alternates={alternates}>
   <h1>{title}</h1>
   <p><em>Coming soon…</em></p>
-</BaseLayout>
+</PageLayout>

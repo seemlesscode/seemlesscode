@@ -1,10 +1,10 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro'
+import PageLayout from '@/layouts/PageLayout.astro'
 import { aboutData } from './data/about.astro'
 
 const { title, description, lang, alternates } = aboutData
 ---
-<BaseLayout lang={lang} title={title} description={description} alternates={alternates}>
+<PageLayout lang={lang} title={title} description={description} alternates={alternates}>
     <h1>{title}</h1>
 
     <section>
@@ -26,4 +26,4 @@ const { title, description, lang, alternates } = aboutData
     <h2>Projects</h2>
     <p>Kallosophia est mon premier projet personnel: un quiz autour de la thématique Musée qui a l'ambition d'apporter de la beauté et du savoir de manière ludique à ses utilisateurs petits et grands.</p>
     </section>
-</BaseLayout>
+</PageLayout>

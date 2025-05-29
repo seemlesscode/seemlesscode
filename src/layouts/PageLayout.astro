@@ -1,0 +1,27 @@
+---
+import type { LayoutProps } from "@/types/layout";
+import DocumentLayout from "./DocumentLayout.astro";
+import Menu from "@/components/Menu.astro";
+import "@/styles/page.css";
+
+const {
+  title = "Seemless Code",
+  description = "",
+  alternates = {},
+  canonical
+}: LayoutProps = Astro.props;
+
+const lang = Astro.props.lang ??
+  (Astro.url.pathname.startsWith("/fr") ? "fr" : "en");
+---
+
+<DocumentLayout {title} {description} {lang} {alternates} {canonical}>
+  <main>
+    <div class="content">
+      <slot/>
+    </div>
+    <div class="menu-wrapper">
+      <Menu lang={lang} />
+    </div>
+  </main>
+</DocumentLayout>
