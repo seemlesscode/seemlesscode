@@ -17,7 +17,7 @@ export default function ThemeSwitcher({ labels }: ThemeSwitcherProps) {
     { label: labels.dark, value: "dark" },
   ];
 
-  const colors = ["#f82", "#0e5", "#f0f", "#0cf"];
+  const colors = ["#f82", "#4f5", "#c2c", "#0cf"];
 
   return (
     <>
