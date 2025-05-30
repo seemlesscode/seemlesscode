@@ -1,0 +1,48 @@
+.video-wrapper {
+  position: relative;
+  width: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.video-play-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  margin: auto;
+}
+
+.video-play-icon {
+  width: 48px;
+  height: 48px;
+  fill: var(--color-primary);
+  filter: contrast(200%) drop-shadow(2px 2px var(--color-discreet));
+  image-rendering: pixelated;
+  transition: transform 0.2s ease;
+}
+
+.video-play-button:hover .video-play-icon {
+  transform: scale(1.1);
+}
+
+.video-pixel {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.6s ease-in;
+  pointer-events: none;
+  user-select: none;
+}
+
+.video-pixel.visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.easter-egg {
+  visibility: hidden;
+}

@@ -10,5 +10,12 @@ const { title, description, lang, alternates } = settingsData
 ---
 
 <PageLayout title={title} description={description} lang={lang} alternates={alternates}>
+  <div class="easter-egg">
+    <h1>{title}</h1>
+    <ul>
+      <LangSwitcher client:load />
+      <ThemeSwitcher client:load labels={{ theme: "Theme", color: "Color", light: "Light", dark: "Dark" }}/>
+    </ul>
+  </div>
   <StylizedVideo client:load />
 </PageLayout>
