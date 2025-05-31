@@ -1,21 +1,13 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
+import SecretSettings from '@/components/SecretSettings';
 import StylizedVideo from '@/components/StylizedVideo';
-import LangSwitcher from '@/components/LangSwitcher';
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { settingsData } from './data/settings.astro';
-
 
 const { title, description, lang, alternates } = settingsData
 ---
 
 <PageLayout title={title} description={description} lang={lang} alternates={alternates}>
-  <div class="easter-egg">
-    <h1>{title}</h1>
-    <ul>
-      <LangSwitcher client:load />
-      <ThemeSwitcher client:load labels={{ theme: "Theme", color: "Color", light: "Light", dark: "Dark" }}/>
-    </ul>
-  </div>
+  <SecretSettings {title} client:load/>
   <StylizedVideo client:load />
 </PageLayout>

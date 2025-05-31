@@ -1,11 +1,11 @@
 import { useEffect } from "preact/hooks";
+import { useUnlockedSync } from "./useUnlocked";
 
-export function useKonamiCodeMobile(onUnlock: () => void) {
+export function useKonamiCodeMobile() {
+  const { unlocked, updateUnlocked } = useUnlockedSync();
+
   useEffect(() => {
-    const previouslyUnlocked = localStorage.getItem("unlocked") === "true";
-
-    if (previouslyUnlocked) {
-      onUnlock();
+    if (unlocked) {
       return;
     }
 
@@ -49,8 +49,7 @@ export function useKonamiCodeMobile(onUnlock: () => void) {
       if (direction === sequence[current]) {
         current++;
         if (current === sequence.length) {
-          localStorage.setItem("unlocked", "true");
-          onUnlock();
+          updateUnlocked(true);
           current = 0;
         }
       } else {

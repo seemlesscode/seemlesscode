@@ -26,8 +26,8 @@ html[data-primary="#f82"] {
   --color-primary: #f82;
 }
 
-html[data-primary="#4f5"] {
-  --color-primary: #4f5;
+html[data-primary="#0d4"] {
+  --color-primary: #0d4;
 }
 
 html[data-primary="#c2c"] {
@@ -168,7 +168,7 @@ body {
   box-shadow: 0 0 0 2px #f82;
 }
 
-.color-choice-4f5 {
+.color-choice-0d4 {
   width: var(--color-choice-size);
   height: var(--color-choice-size);
   border-radius: 50%;
@@ -177,14 +177,14 @@ body {
   transition: border var(--transition);
 }
 
-.color-choice-4f5[data-active="true"] {
+.color-choice-0d4[data-active="true"] {
   border: 2px solid var(--color-bg);
   box-shadow: 0 0 0 2px var(--color-primary);
 }
 
-.color-choice-4f5:hover {
+.color-choice-0d4:hover {
   border-color: var(--color-bg);
-  box-shadow: 0 0 0 2px #4f5;
+  box-shadow: 0 0 0 2px #0d4;
 }
 
 .color-choice-c2c {

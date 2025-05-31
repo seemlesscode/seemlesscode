@@ -1,14 +1,19 @@
 import { useRef, useState } from "preact/hooks";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
 import { useKonamiCodeMobile } from "@/hooks/useKonamiCodeMobile";
+import { useThemeSync } from "@/hooks/useTheme";
+import { useUnlockedSync } from "@/hooks/useUnlocked";
+import useHint from "@/hooks/useHint";
 
 export default function StylizedVideo() {
+  useHint();
   const [started, setStarted] = useState(false);
-  const [unlocked, setUnlocked] = useState(false);
+  const { unlocked } = useUnlockedSync(false);
+  const { color } = useThemeSync();
 
   const videoRef = useRef<HTMLVideoElement>(null);
-  useKonamiCode(() => setUnlocked(true));
-  useKonamiCodeMobile(() => setUnlocked(true));
+  useKonamiCode();
+  useKonamiCodeMobile();
 
   const handleStart = () => {
     const video = videoRef.current;
@@ -38,7 +43,7 @@ export default function StylizedVideo() {
               aria-label="Play video"
             >
               <img
-                src="/media/play-f82.png"
+                src={`/media/play-${color?.substring(1)}.png`}
                 alt="Play"
                 width="64"
                 height="64"

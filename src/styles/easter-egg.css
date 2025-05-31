@@ -43,6 +43,10 @@
   pointer-events: auto;
 }
 
-.easter-egg {
+.easter-egg-show {
+  visibility: visible;
+}
+
+.easter-egg-hidden {
   visibility: hidden;
 }
