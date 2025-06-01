@@ -1,33 +1,26 @@
 ---
-import Menu from "@/components/Menu.astro";
-import type { LayoutProps } from "@/types/layout";
-import DocumentLayout from "./DocumentLayout.astro";
-import "@/styles/page.css";
-import "@/styles/menu.css";
-import LangSwitcher from "@/components/LangSwitcher";
+import Menu from '@/components/Menu.astro';
+import type { LayoutProps } from '@/types/layout';
+import DocumentLayout from './DocumentLayout.astro';
+import '@/styles/page.css';
+import '@/styles/menu.css';
+import LangSwitcher from '@/components/LangSwitcher';
 
 const {
-  title = "Seemless Code",
-  description = "",
+  title = 'Seemless Code',
+  description = '',
   alternates = {
-    en: "/",
-    fr: "/",
+    en: '/',
+    fr: '/',
   },
   canonical,
 }: LayoutProps = Astro.props;
 
 const lang =
-  Astro.props.lang ?? (Astro.url.pathname.startsWith("/fr") ? "fr" : "en");
+  Astro.props.lang ?? (Astro.url.pathname.startsWith('/fr') ? 'fr' : 'en');
 ---
 
-<DocumentLayout
-  {title}
-  {description}
-  {lang}
-  {alternates}
-  {canonical}
-  client:load
->
+<DocumentLayout {title} {description} {lang} {alternates} {canonical}>
   <main>
     <div class="content"></div>
 
