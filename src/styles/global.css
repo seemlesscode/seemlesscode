@@ -12,6 +12,7 @@
   --circle-gap: 32px;
   --color-choice-size: 20px;
   --color-choice-gap: 0.75rem;
+  --header-height: 80px;
 }
 
 html[data-theme="dark"] {
