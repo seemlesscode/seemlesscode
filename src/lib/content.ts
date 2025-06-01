@@ -7,7 +7,7 @@ import {
 export async function loadLocalizedEntry<T extends keyof ContentEntryMap>(
   collection: T,
   slug: string,
-  lang: string
+  lang: string,
 ): Promise<{
   current: CollectionEntry<T> | undefined;
   localized: CollectionEntry<T>[];
@@ -20,7 +20,7 @@ export async function loadLocalizedEntry<T extends keyof ContentEntryMap>(
 
 export async function getLocalizedPaths<T extends keyof ContentEntryMap>(
   collection: T,
-  lang: string
+  lang: string,
 ) {
   const entries = await getCollection(collection);
   return entries

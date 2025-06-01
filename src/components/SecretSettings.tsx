@@ -1,5 +1,5 @@
-import { useUnlockedSync } from "@/hooks/useUnlocked";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { useUnlockedSync } from "@/hooks/useUnlocked";
 
 interface Props {
   title: string;

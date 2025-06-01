@@ -98,7 +98,9 @@ main {
   border-radius: 50%;
   border: 2px solid var(--color-subtext);
   background: var(--color-bg);
-  transition: border var(--transition), background var(--transition);
+  transition:
+    border var(--transition),
+    background var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,7 +130,9 @@ main {
   font-size: 0.7rem;
   opacity: 0;
   transform: translateY(-0.4rem);
-  transition: opacity var(--transition), transform var(--transition);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
   color: var(--color-primary);
 }
 
@@ -172,7 +176,9 @@ main {
 }
 
 #main-content {
-  transition: transform var(--transition), width var(--transition);
+  transition:
+    transform var(--transition),
+    width var(--transition);
   width: 100vw;
   margin-left: 20px;
   padding: 0px 20px;

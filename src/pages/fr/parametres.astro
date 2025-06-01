@@ -1,15 +1,23 @@
 ---
-import PageLayout from '@/layouts/PageLayout.astro';
-import ThemeSwitcher from '@/components/ThemeSwitcher';
-import { settings } from './data/settings.astro';
-import type { PageDataType } from '@/types/page';
+import ThemeSwitcher from "@/components/ThemeSwitcher";
+import PageLayout from "@/layouts/PageLayout.astro";
+import type { PageDataType } from "@/types/page";
+import { settings } from "./data/settings.astro";
 
-const { title, description, lang, alternates } = settings.data as PageDataType
+const { title, description, lang, alternates } = settings.data as PageDataType;
 ---
 
 <PageLayout {title} {description} {lang} {alternates}>
   <h1>{title}</h1>
   <ul>
-    <ThemeSwitcher client:load labels={{ theme: "Thème", color: "Couleur", light: "Clair", dark: "Sombre" }}/>
+    <ThemeSwitcher
+      client:load
+      labels={{
+        theme: "Thème",
+        color: "Couleur",
+        light: "Clair",
+        dark: "Sombre",
+      }}
+    />
   </ul>
 </PageLayout>

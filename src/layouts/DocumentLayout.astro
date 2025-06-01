@@ -1,8 +1,8 @@
 ---
-import type { LayoutProps } from "@/types/layout";
-import SEO from "@/components/SEO.astro";
 import LangClientInit from "@/components/LangClientInit";
+import SEO from "@/components/SEO.astro";
 import ThemeClientInit from "@/components/ThemeClientInit";
+import type { LayoutProps } from "@/types/layout";
 import "@/styles/global.css";
 import "@/styles/easter-egg.css";
 
@@ -12,11 +12,10 @@ const {
   description = "",
   alternates = {
     en: "/",
-    fr: "/"
+    fr: "/",
   },
-  canonical
+  canonical,
 }: LayoutProps = Astro.props;
-
 ---
 
 <html lang={lang} data-theme="light">
@@ -42,6 +41,5 @@ const {
     <ThemeClientInit client:load />
 
     <slot />
-
   </body>
 </html>

@@ -1,9 +1,9 @@
 import { useRef, useState } from "preact/hooks";
+import useHint from "@/hooks/useHint";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
 import { useKonamiCodeMobile } from "@/hooks/useKonamiCodeMobile";
 import { useThemeSync } from "@/hooks/useTheme";
 import { useUnlockedSync } from "@/hooks/useUnlocked";
-import useHint from "@/hooks/useHint";
 
 export default function StylizedVideo() {
   useHint();

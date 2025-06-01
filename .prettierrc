@@ -1,0 +1,15 @@
+{
+  "plugins": ["prettier-plugin-astro", "@ianvs/prettier-plugin-sort-imports"],
+  "pluginSearchDirs": false,
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ],
+  "importOrder": ["^@/(.*)$", "^[./]"],
+  "importOrderSortSpecifiers": true,
+  "importOrderSeparation": true
+}

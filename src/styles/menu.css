@@ -31,7 +31,9 @@
   border-radius: 50%;
   border: 2px solid var(--color-subtext);
   background: var(--color-bg);
-  transition: border var(--transition), background var(--transition);
+  transition:
+    border var(--transition),
+    background var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +63,9 @@
   font-size: 0.7rem;
   opacity: 0;
   transform: translateY(-0.4rem);
-  transition: opacity var(--transition), transform var(--transition);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
   color: var(--color-primary);
 }
 

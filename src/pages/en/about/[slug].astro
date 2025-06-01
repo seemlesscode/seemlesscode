@@ -1,17 +1,17 @@
 ---
-import CollectionLayout from '@/layouts/CollectionLayout.astro';
-import { about } from '../data/about.astro';
-import { getLocalizedPaths, loadLocalizedEntry } from '@/lib/content';
-import { buildAlternateUrl, buildAlternates } from '@/lib/alternates';
-import { SlugDataType } from '@/types/page';
+import CollectionLayout from "@/layouts/CollectionLayout.astro";
+import { buildAlternates, buildAlternateUrl } from "@/lib/alternates";
+import { getLocalizedPaths, loadLocalizedEntry } from "@/lib/content";
+import { SlugDataType } from "@/types/page";
+import { about } from "../data/about.astro";
 
 export async function getStaticPaths() {
-  const lang = 'en';
+  const lang = "en";
   const collection = "about" as const;
   return getLocalizedPaths(collection, lang);
 }
 
-const lang = 'en';
+const lang = "en";
 const collection = "about" as const;
 const { slug } = Astro.params;
 
@@ -20,24 +20,24 @@ const { current, localized } = await loadLocalizedEntry(collection, slug, lang);
 if (!current) throw new Error(`No data found for the slug: ${slug}`);
 const { Content } = await current.render();
 
-const { title, description, slugs } = about.data as SlugDataType
-const alternates = buildAlternates(slugs, slug)
+const { title, description, slugs } = about.data as SlugDataType;
+const alternates = buildAlternates(slugs, slug);
 ---
 
 <CollectionLayout {lang} {title} {description} {alternates}>
   <div slot="sidebar" class="sidebar-entries">
-    {localized.map((entry) => (
-      <a
-      href={buildAlternateUrl(lang, collection, entry.slug)}
-      class={entry.data.slug === slug ? 'active' : ''}
-      >
-        {entry.data.title}
-      </a>
-    ))}
+    {
+      localized.map((entry) => (
+        <a
+          href={buildAlternateUrl(lang, collection, entry.slug)}
+          class={entry.data.slug === slug ? "active" : ""}
+        >
+          {entry.data.title}
+        </a>
+      ))
+    }
   </div>
-  
+
   <h1 slot="markdown-title" class="markdown-title">{current.data.title}</h1>
   <Content slot="markdown-body" entry={current} />
-
 </CollectionLayout>
-

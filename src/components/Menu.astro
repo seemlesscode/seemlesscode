@@ -5,10 +5,16 @@ const { lang = "en" } = Astro.props;
 ---
 
 <div class="menu">
-  {getMenu(lang).map(({ id, label, url }) => (
-    <a id={id} href={url} class={`menu-button ${id === 'settings' ? 'settings' : ''}`}>
-      <div class="circle" />
-      <span class="menu-label">{label}</span>
-    </a>
-  ))}
+  {
+    getMenu(lang).map(({ id, label, url }) => (
+      <a
+        id={id}
+        href={url}
+        class={`menu-button ${id === "settings" ? "settings" : ""}`}
+      >
+        <div class="circle" />
+        <span class="menu-label">{label}</span>
+      </a>
+    ))
+  }
 </div>
