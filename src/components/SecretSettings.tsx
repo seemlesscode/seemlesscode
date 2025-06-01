@@ -1,5 +1,5 @@
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import { useUnlockedSync } from "@/hooks/useUnlocked";
+import ThemeSwitcher from '@/components/ThemeSwitcher';
+import { useUnlockedSync } from '@/hooks/useUnlocked';
 
 interface Props {
   title: string;
@@ -7,7 +7,7 @@ interface Props {
 
 export default function Settings({ title }: Props) {
   const { unlocked } = useUnlockedSync();
-  const show = unlocked ? "show" : "hidden";
+  const show = unlocked ? 'show' : 'hidden';
 
   return (
     <div class={`easter-egg-${show}`}>
@@ -15,10 +15,10 @@ export default function Settings({ title }: Props) {
       <ul>
         <ThemeSwitcher
           labels={{
-            theme: "Theme",
-            color: "Color",
-            light: "Light",
-            dark: "Dark",
+            theme: 'Theme',
+            color: 'Color',
+            light: 'Light',
+            dark: 'Dark',
           }}
         />
       </ul>

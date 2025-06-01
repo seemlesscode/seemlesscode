@@ -11,5 +11,8 @@
   ],
   "importOrder": ["^@/(.*)$", "^[./]"],
   "importOrderSortSpecifiers": true,
-  "importOrderSeparation": true
+  "importOrderSeparation": true,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5"
 }
