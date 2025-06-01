@@ -202,7 +202,8 @@ body.drawer-open #main-content {
   text-align: right;
 }
 
-.sidebar-content {
+.sidebar-entries {
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
 }

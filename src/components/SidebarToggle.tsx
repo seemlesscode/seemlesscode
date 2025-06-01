@@ -1,15 +1,15 @@
 import { useEffect, useState } from "preact/hooks";
 
 export default function SidebarToggle() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    const stored = localStorage.getItem("sidebar");
+    return stored === "open" || stored === null;
+  });
 
   useEffect(() => {
-    const isOpen =
-      localStorage.getItem("sidebar") === "open" ||
-      localStorage.getItem("sidebar") === null;
-    setVisible(isOpen);
-    document.body.classList.toggle("drawer-open", isOpen);
-  }, []);
+    document.body.classList.toggle("drawer-open", visible);
+  }, [visible]);
 
   const toggleSidebar = () => {
     const next = !visible;

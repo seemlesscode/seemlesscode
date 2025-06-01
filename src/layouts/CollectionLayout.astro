@@ -32,9 +32,8 @@ const lang = Astro.props.lang ??
       <div class="sidebar-header">
         <SidebarToggle client:load />
       </div>
-      <div class="sidebar-content">
-        <slot name="sidebar"/>
-      </div>
+
+      <slot name="sidebar"/>
     </div>
     
     <main id="main-content">

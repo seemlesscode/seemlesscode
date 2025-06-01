@@ -27,6 +27,17 @@ const {
     <SEO {title} {description} {lang} {alternates} {canonical} />
   </head>
   <body>
+    <script>
+      (function () {
+        try {
+          const state = localStorage.getItem("sidebar");
+          const shouldOpen = state === "open" || state === null;
+          if (shouldOpen) {
+            document.body.classList.add("drawer-open");
+          }
+        } catch (_) {}
+      })();
+    </script>
     <LangClientInit client:load />
     <ThemeClientInit client:load />
 
