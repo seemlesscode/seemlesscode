@@ -21,20 +21,23 @@ const lang = Astro.props.lang ??
 ---
 
 <DocumentLayout {title} {description} {lang} {alternates} {canonical} client:load>
+  <div class="header">
+    <div class="header-element">
+      <LangSwitcher {alternates} client:load />
+    </div>
+  </div>
+  
   <div class="collection-layout">
     <div id="sidebar" class="sidebar">
-      <div class="header-sidebar">
+      <div class="sidebar-header">
         <SidebarToggle client:load />
       </div>
-      <slot name="sidebar"/>
+      <div class="sidebar-content">
+        <slot name="sidebar"/>
+      </div>
     </div>
     
     <main id="main-content">
-      <div class="header">
-        <div class="header-element">
-          <LangSwitcher {alternates} client:load />
-        </div>
-      </div>
       <div class="markdown-body">
         <slot name="markdown-title" />
         <slot name="markdown-body" />

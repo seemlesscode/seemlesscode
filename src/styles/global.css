@@ -13,6 +13,7 @@
   --color-choice-size: 20px;
   --color-choice-gap: 0.75rem;
   --header-height: 80px;
+  --sidebar-width: 220px;
 }
 
 html[data-theme="dark"] {
@@ -239,4 +240,17 @@ a {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+}
+
+.header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
+
+.header-element {
+  padding: 1rem;
 }

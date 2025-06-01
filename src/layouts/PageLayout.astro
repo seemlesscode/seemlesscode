@@ -4,6 +4,7 @@ import DocumentLayout from "./DocumentLayout.astro";
 import Menu from "@/components/Menu.astro";
 import "@/styles/page.css";
 import "@/styles/menu.css";
+import LangSwitcher from "@/components/LangSwitcher";
 
 const {
   title = "Seemless Code",
@@ -19,7 +20,13 @@ const lang = Astro.props.lang ??
   (Astro.url.pathname.startsWith("/fr") ? "fr" : "en");
 ---
 
-<DocumentLayout {title} {description} {lang} {alternates} {canonical}>
+<DocumentLayout {title} {description} {lang} {alternates} {canonical} client:load>
+  <div class="header">
+    <div class="header-element">
+      <LangSwitcher {alternates} client:load />
+    </div>
+  </div>
+  
   <main>
     <div class="content">
       <slot/>
