@@ -8,6 +8,7 @@ export default function SidebarToggle() {
   });
 
   useEffect(() => {
+    document.body.classList.add("hydrated");
     document.body.classList.toggle("drawer-open", visible);
   }, [visible]);
 
