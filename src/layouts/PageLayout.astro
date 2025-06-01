@@ -3,11 +3,15 @@ import type { LayoutProps } from "@/types/layout";
 import DocumentLayout from "./DocumentLayout.astro";
 import Menu from "@/components/Menu.astro";
 import "@/styles/page.css";
+import "@/styles/menu.css";
 
 const {
   title = "Seemless Code",
   description = "",
-  alternates = {},
+  alternates = {
+    en: "/",
+    fr: "/"
+  },
   canonical
 }: LayoutProps = Astro.props;
 
@@ -20,6 +24,7 @@ const lang = Astro.props.lang ??
     <div class="content">
       <slot/>
     </div>
+    
     <div class="menu-wrapper">
       <Menu lang={lang} />
     </div>

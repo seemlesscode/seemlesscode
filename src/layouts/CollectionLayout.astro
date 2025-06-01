@@ -3,17 +3,22 @@ import type { LayoutProps } from "@/types/layout";
 import DocumentLayout from "./DocumentLayout.astro";
 import Menu from "@/components/Menu.astro";
 import "@/styles/collection.css";
+import LangSwitcher from "@/components/LangSwitcher";
 
 const {
   title = "Seemless Code",
   description = "",
-  alternates = {},
+  alternates = {
+    en: "/",
+    fr: "/"
+  },
   canonical
 }: LayoutProps = Astro.props;
 
 const lang = Astro.props.lang ??
   (Astro.url.pathname.startsWith("/fr") ? "fr" : "en");
 ---
+
 <DocumentLayout {title} {description} {lang} {alternates} {canonical}>
   <div class="collection-layout">
     <aside class="sidebar">
@@ -21,13 +26,20 @@ const lang = Astro.props.lang ??
     </aside>
 
     <main>
+      <div class="header">
+        <div class="header-element">
+          <LangSwitcher {alternates} client:load />
+        </div>
+      </div>
       <div class="markdown-body">
         <slot name="markdown-title" />
         <slot name="markdown-body" />
       </div>
       
-      <div class="menu-wrapper">
-        <Menu lang={lang} />
+      <div class="footer">
+        <div class="menu-wrapper">
+          <Menu lang={lang} />
+        </div>
       </div>
     </main>
   </div>

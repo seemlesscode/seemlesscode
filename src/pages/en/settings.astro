@@ -2,12 +2,13 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import SecretSettings from '@/components/SecretSettings';
 import StylizedVideo from '@/components/StylizedVideo';
-import { settingsData } from './data/settings.astro';
+import { settings } from './data/settings.astro';
+import type { PageDataType } from '@/types/page';
 
-const { title, description, lang, alternates } = settingsData
+const { title, description, lang, alternates } = settings.data as PageDataType
 ---
 
-<PageLayout title={title} description={description} lang={lang} alternates={alternates}>
+<PageLayout {title} {description} {lang} {alternates}>
   <SecretSettings {title} client:load/>
   <StylizedVideo client:load />
 </PageLayout>

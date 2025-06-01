@@ -1,23 +1,37 @@
 import { useLangSync } from "@/hooks/useLang";
 
-export default function LangSwitcher() {
+interface Props {
+  alternates: {
+    en: string;
+    fr: string;
+  };
+}
+
+export default function LangSwitcher({ alternates }: Props) {
   const { lang, updateLang } = useLangSync();
 
   return (
     <li>
-      Language:
       <a
-        href="/fr/parametres"
+        href={alternates.fr}
         class={lang === "fr" ? "lang-active" : "lang-inactive"}
-        onClick={() => updateLang("fr")}
+        onClick={(e) => {
+          e.preventDefault();
+          updateLang("fr");
+          window.location.href = alternates.fr;
+        }}
       >
         Fr
       </a>
       /
       <a
-        href="/en/settings"
+        href={alternates.en}
         class={lang === "en" ? "lang-active" : "lang-inactive"}
-        onClick={() => updateLang("en")}
+        onClick={(e) => {
+          e.preventDefault();
+          updateLang("en");
+          window.location.href = alternates.en;
+        }}
       >
         En
       </a>

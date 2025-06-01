@@ -1,7 +1,9 @@
+import type { Alternates } from "./base";
+
 export interface LayoutProps {
   lang?: "en" | "fr";
   title?: string;
   description?: string;
-  alternates?: Record<string, string>;
+  alternates?: Alternates;
   canonical?: string;
 }

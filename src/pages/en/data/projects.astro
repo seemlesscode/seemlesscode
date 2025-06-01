@@ -1,11 +1,16 @@
 ---
-import type { PageDataType } from "@/types/page";
+import type { DisplayDataType } from "@/types/page";
 
-export const projectsData: PageDataType = {
-  title: "Projects",
-  description: "A look at the creative and technical projects I've worked on.",
-  lang: "en",
-  alternates: { fr: "/fr/projets/kallosophia", en: "/en/projects/kallosophia" },
-  alternate: "/en/projects/kallosophia",
+export const projects: DisplayDataType = {
+  type: "slug",
+  data: {
+    title: "Projects",
+    description: "A look at the creative and technical projects I've worked on.",
+    lang: "en",
+    alternates: { fr: "/fr/projets/kallosophia", en: "/en/projects/kallosophia" },
+    slugs: {
+      "kallosophia": { en: "/en/projects/kallosophia", fr: "/fr/projets/kallosophia" },
+    }
+}
 }
 ---

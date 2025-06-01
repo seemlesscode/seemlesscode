@@ -1,5 +1,4 @@
 import { useUnlockedSync } from "@/hooks/useUnlocked";
-import LangSwitcher from "@/components/LangSwitcher";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 interface Props {
@@ -14,7 +13,6 @@ export default function Settings({ title }: Props) {
     <div class={`easter-egg-${show}`}>
       <h1>{title}</h1>
       <ul>
-        <LangSwitcher />
         <ThemeSwitcher
           labels={{
             theme: "Theme",

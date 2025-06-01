@@ -1,11 +1,13 @@
 ---
-import type { PageDataType } from "@/types/page";
+import type { DisplayDataType } from "@/types/page";
 
-export const settingsData: PageDataType = {
-  title: "Settings",
-  description: "Customize your preferences.",
-  lang: "en",
-  alternates: { fr: "/fr/parametres", en: "/en/settings" },
-  alternate: "/en/settings",
+export const settings: DisplayDataType = {
+  type: "page",
+  data: {
+    title: "Settings",
+    description: "Customize your preferences.",
+    lang: "en",
+    alternates: { fr: "/fr/parametres", en: "/en/settings" },
+  }
 }
 ---

@@ -1,11 +1,13 @@
 ---
-import type { PageDataType } from "@/types/page";
+import type { DisplayDataType } from "@/types/page";
 
-export const contactData: PageDataType = {
-  title: "Contact",
-  description: "Comment me joindre.",
-  lang: "fr",
-  alternates: { fr: "/fr/contact", en: "/en/contact" },
-  alternate: "/fr/contact",
+export const contact: DisplayDataType = {
+  type: "page",
+  data: {
+    title: "Contact",
+    description: "Comment me joindre.",
+    lang: "fr",
+    alternates: { fr: "/fr/contact", en: "/en/contact" },
+  }
 }
 ---

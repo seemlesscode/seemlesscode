@@ -1,21 +1,22 @@
 ---
-import type { PageDataType } from "@/types/page";
+import type { DisplayDataType } from "@/types/page";
+import type { Lang } from "@/types/base";
 
 // About
-import { aboutData as aboutDataEn } from "@/pages/en/data/about.astro";
-import { aboutData as aboutDataFr } from "@/pages/fr/data/about.astro";
+import { about as aboutEn } from "@/pages/en/data/about.astro";
+import { about as aboutFr } from "@/pages/fr/data/about.astro";
 
 // Projects
-import { projectsData as projectsDataEn } from "@/pages/en/data/projects.astro";
-import { projectsData as projectsDataFr } from "@/pages/fr/data/projects.astro";
+import { projects as projectsEn } from "@/pages/en/data/projects.astro";
+import { projects as projectsFr } from "@/pages/fr/data/projects.astro";
 
 // Contact
-import { contactData as contactDataEn } from "@/pages/en/data/contact.astro";
-import { contactData as contactDataFr } from "@/pages/fr/data/contact.astro";
+import { contact as contactEn } from "@/pages/en/data/contact.astro";
+import { contact as contactFr } from "@/pages/fr/data/contact.astro";
 
 // Settings
-import { settingsData as settingsDataEn } from "@/pages/en/data/settings.astro";
-import { settingsData as settingsDataFr } from "@/pages/fr/data/settings.astro";
+import { settings as settingsEn } from "@/pages/en/data/settings.astro";
+import { settings as settingsFr } from "@/pages/fr/data/settings.astro";
 
 const { lang = "en" } = Astro.props;
 
@@ -23,25 +24,26 @@ type RouteID = "about" | "projects" | "contact" | "settings";
 
 const ids: RouteID[] = ["about", "projects", "contact", "settings"];
 
-type RouteData = Record<RouteID, PageDataType>;
+type RouteData = Record<RouteID, DisplayDataType>;
 
 const routeData: RouteData = {
-  about: lang === "fr" ? aboutDataFr : aboutDataEn,
-  projects: lang === "fr" ? projectsDataFr : projectsDataEn,
-  contact: lang === "fr" ? contactDataFr : contactDataEn,
-  settings: lang === "fr" ? settingsDataFr : settingsDataEn,
+  about: lang === "fr" ? aboutFr : aboutEn,
+  projects: lang === "fr" ? projectsFr : projectsEn,
+  contact: lang === "fr" ? contactFr : contactEn,
+  settings: lang === "fr" ? settingsFr : settingsEn,
 };
 
-const routes = ids.map((id) => ({
-  id,
-  label: routeData[id].title,
-  alternate: routeData[id].alternate
-}));
+const routes = ids.map((id) => {
+  const { title: label, alternates } = routeData[id].data;
+  const url = alternates[lang as Lang]
+  
+  return { id, label, url }
+});
 ---
 
 <div class="menu">
-  {routes.map(({ id, label, alternate }) => (
-    <a id={id} href={alternate} class={`menu-button ${id === 'settings' ? 'settings' : ''}`}>
+  {routes.map(({ id, label, url }) => (
+    <a id={id} href={url} class={`menu-button ${id === 'settings' ? 'settings' : ''}`}>
       <div class="circle" />
       <span class="menu-label">{label}</span>
     </a>

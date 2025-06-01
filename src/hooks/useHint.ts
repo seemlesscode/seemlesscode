@@ -1,9 +1,6 @@
 import { useEffect } from "preact/hooks";
-import { useThemeSync } from "./useTheme";
 
 export default function useHint() {
-  const { color } = useThemeSync();
-
   useEffect(() => {
     const lines = [
       "In this part of the web, there's two kinds of people...",

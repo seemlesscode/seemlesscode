@@ -1,34 +1,35 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
 import CollectionLayout from '@/layouts/CollectionLayout.astro';
-import { projectsData } from '../data/projects.astro';
+import { projects } from '../data/projects.astro';
+import { buildAlternateUrl, buildAlternates } from '@/lib/alternates';
+import { getLocalizedPaths, loadLocalizedEntry } from '@/lib/content';
+import { SlugDataType } from '@/types/page';
 
-type AboutEntry = CollectionEntry<'projects'>;
 
 export async function getStaticPaths() {
-  const entries = await getCollection('projects');
-  return entries
-    .filter((entry) => entry.data.lang === 'en')
-    .map((entry) => ({ params: { slug: entry.data.slug } }));
+  const lang = 'en';
+  const collection = "projects" as const;
+  return getLocalizedPaths(collection, lang);
 }
 
+const lang = 'en';
+const collection = "projects" as const;
 const { slug } = Astro.params;
-const entries: AboutEntry[] = await getCollection('projects');
-const currentLang = 'en';
-const localizedEntries = entries.filter((entry) => entry.data.lang === currentLang);
-const currentEntry = localizedEntries.find((entry) => entry.data.slug === slug);
 
-if (!currentEntry) throw new Error(`No data found for the slug: ${slug}`);
-const { Content } = await currentEntry.render();
+const { current, localized } = await loadLocalizedEntry(collection, slug, lang);
 
-const { title, description, alternates } = projectsData
+if (!current) throw new Error(`No data found for the slug: ${slug}`);
+const { Content } = await current.render();
+
+const { title, description, slugs } = projects.data as SlugDataType
+const alternates = buildAlternates(slugs, slug)
 ---
 
-<CollectionLayout lang={currentLang} title={title} description={description} alternates={alternates}>
+<CollectionLayout {lang} {title} {description} {alternates}>
   <div slot="sidebar" class="sidebar-entries">
-    {localizedEntries.map((entry) => (
+    {localized.map((entry) => (
       <a
-      href={`/en/projects/${entry.data.slug}`}
+      href={buildAlternateUrl(lang, collection, entry.slug)}
       class={entry.data.slug === slug ? 'active' : ''}
       >
         {entry.data.title}
@@ -36,8 +37,8 @@ const { title, description, alternates } = projectsData
     ))}
   </div>
   
-  <h1 slot="markdown-title" class="markdown-title">{currentEntry.data.title}</h1>
-  <Content slot="markdown-body" entry={currentEntry} />
+  <h1 slot="markdown-title" class="markdown-title">{current.data.title}</h1>
+  <Content slot="markdown-body" entry={current} />
 
 </CollectionLayout>
 
