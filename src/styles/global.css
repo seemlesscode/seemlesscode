@@ -620,7 +620,7 @@ body:not(.hydrated) * {
 
 .taunt-button {
   text-align: center;
-  margin-top: 24px;
+  margin: 24px auto 48px;
   filter: blur(2px);
   opacity: 0.5;
   transition:

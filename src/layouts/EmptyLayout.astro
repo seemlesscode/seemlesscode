@@ -1,5 +1,4 @@
 ---
-import PlayButton from '@/components/PlayButton';
 import type { LayoutProps } from '@/types/layout';
 import DocumentLayout from './DocumentLayout.astro';
 
@@ -18,9 +17,5 @@ const lang =
 ---
 
 <DocumentLayout {title} {description} {lang} {alternates} {canonical}>
-  <main>
-    <div class="play-wrapper">
-      <PlayButton />
-    </div>
-  </main>
+  <main></main>
 </DocumentLayout>

@@ -1,4 +1,5 @@
-import { useThemeSync } from "@/hooks/useTheme";
+import { useThemeSync } from '@/hooks/useTheme';
+import { useUnlockedSync } from '@/hooks/useUnlocked';
 
 interface ThemeSwitcherProps {
   labels: {
@@ -11,13 +12,14 @@ interface ThemeSwitcherProps {
 
 export default function ThemeSwitcher({ labels }: ThemeSwitcherProps) {
   const { theme, color, updateTheme, updateColor } = useThemeSync();
+  const { unlocked } = useUnlockedSync(false);
 
   const themes = [
-    { label: labels.light, value: "light" },
-    { label: labels.dark, value: "dark" },
+    { label: labels.light, value: 'light' },
+    { label: labels.dark, value: 'dark' },
   ];
 
-  const colors = ["#f82", "#0d4", "#c2c", "#0cf"];
+  const colors = ['#f82', '#0d4', '#c2c', '#0cf'];
 
   return (
     <>
@@ -32,8 +34,8 @@ export default function ThemeSwitcher({ labels }: ThemeSwitcherProps) {
               style={
                 theme === value
                   ? {
-                      borderColor: "var(--color-primary)",
-                      color: "var(--color-primary)",
+                      borderColor: 'var(--color-primary)',
+                      color: 'var(--color-primary)',
                     }
                   : undefined
               }
@@ -44,20 +46,22 @@ export default function ThemeSwitcher({ labels }: ThemeSwitcherProps) {
         </div>
       </li>
 
-      <li>
-        {labels.color}:
-        <div class="color-options">
-          {colors.map((c) => (
-            <div
-              key={c}
-              class={`color-choice-${c.substring(1)}`}
-              data-active={color === c}
-              style={{ backgroundColor: c }}
-              onClick={() => updateColor(c)}
-            />
-          ))}
-        </div>
-      </li>
+      {unlocked && (
+        <li>
+          {labels.color}:
+          <div class="color-options">
+            {colors.map((c) => (
+              <div
+                key={c}
+                class={`color-choice-${c.substring(1)}`}
+                data-active={color === c}
+                style={{ backgroundColor: c }}
+                onClick={() => updateColor(c)}
+              />
+            ))}
+          </div>
+        </li>
+      )}
     </>
   );
 }

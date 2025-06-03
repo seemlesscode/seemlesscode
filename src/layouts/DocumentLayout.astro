@@ -4,6 +4,7 @@ import SEO from '@/components/SEO.astro';
 import ThemeClientInit from '@/components/ThemeClientInit';
 import type { LayoutProps } from '@/types/layout';
 import '@/styles/global.css';
+import Konami from '@/components/Konami';
 import Menu from '@/components/Menu.astro';
 
 const {
@@ -39,6 +40,7 @@ const {
     </script>
     <LangClientInit client:load />
     <ThemeClientInit client:load />
+    <Konami client:load />
 
     <slot />
 

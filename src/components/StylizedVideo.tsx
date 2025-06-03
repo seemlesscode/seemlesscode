@@ -1,19 +1,31 @@
-import { useRef, useState } from "preact/hooks";
-import useHint from "@/hooks/useHint";
-import { useKonamiCode } from "@/hooks/useKonamiCode";
-import { useKonamiCodeMobile } from "@/hooks/useKonamiCodeMobile";
-import { useThemeSync } from "@/hooks/useTheme";
-import { useUnlockedSync } from "@/hooks/useUnlocked";
+import { useEffect, useRef, useState } from 'preact/hooks';
+import useHint from '@/hooks/useHint';
+import { Lang } from '@/types/base';
+import PlayButton from './PlayButton';
 
-export default function StylizedVideo() {
+interface Props {
+  lang: Lang;
+}
+
+export default function StylizedVideo({ lang }: Props) {
   useHint();
-  const [started, setStarted] = useState(false);
-  const { unlocked } = useUnlockedSync(false);
-  const { color } = useThemeSync();
-
   const videoRef = useRef<HTMLVideoElement>(null);
-  useKonamiCode();
-  useKonamiCodeMobile();
+  const [started, setStarted] = useState(false);
+  const [isDone, setIsDone] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleEnded = () => {
+      setIsDone(true);
+    };
+
+    video.addEventListener('ended', handleEnded);
+    return () => video.removeEventListener('ended', handleEnded);
+  }, []);
+
+  if (isDone) return null;
 
   const handleStart = () => {
     const video = videoRef.current;
@@ -24,35 +36,26 @@ export default function StylizedVideo() {
   };
 
   return (
-    <>
-      {unlocked && (
-        <div class="video-wrapper">
-          <video
-            ref={videoRef}
-            class={`video-pixel ${started ? "visible" : ""}`}
-            width="720"
-            preload="auto"
-          >
-            <source src="/media/tuco-pixel.mp4" type="video/mp4" />
-          </video>
+    <div class="video-wrapper">
+      <video
+        ref={videoRef}
+        class={`video-pixel ${started ? 'visible' : ''}`}
+        width="720"
+        preload="auto"
+        playsInline
+      >
+        <source src={`/media/earn-it-${lang}.mp4`} type="video/mp4" />
+      </video>
 
-          {!started && (
-            <button
-              class="video-play-button"
-              onClick={handleStart}
-              aria-label="Play video"
-            >
-              <img
-                src={`/media/play-${color?.substring(1)}.png`}
-                alt="Play"
-                width="64"
-                height="64"
-                class="pixel-icon"
-              />
-            </button>
-          )}
-        </div>
+      {!started && (
+        <button
+          class="video-play-button"
+          onClick={handleStart}
+          aria-label="Play video"
+        >
+          <PlayButton />
+        </button>
       )}
-    </>
+    </div>
   );
 }
