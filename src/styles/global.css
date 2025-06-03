@@ -237,9 +237,10 @@ a:hover {
 }
 
 .content {
+  height: calc(100vh - (var(--header-height) + var(--footer-height)));
   max-width: 90ch;
   width: 100%;
-  margin: 64px auto 64px;
+  margin: 24px auto 0px;
   padding: 0 24px;
   box-sizing: border-box;
   display: flex;
@@ -268,9 +269,12 @@ a:hover {
   }
 
   .content {
+    height: calc(
+      100vh - (var(--mobile-header-height) + var(--mobile-footer-height))
+    );
     max-width: 90ch;
     width: 100%;
-    margin: 20px auto 64px;
+    margin: 16px auto 64px;
     padding: 0 20px;
     box-sizing: border-box;
     display: flex;
@@ -483,6 +487,7 @@ body.drawer-open .center-container {
 main {
   flex: 1;
   overflow: visible;
+  height: 100%;
   width: 100%;
   box-sizing: border-box;
   padding-bottom: var(--footer-height);
