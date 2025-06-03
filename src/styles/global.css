@@ -615,42 +615,60 @@ body:not(.hydrated) * {
 }
 
 /* ==========================================================================
-   CTA: SECRET CONTENT BLOCK
+   SECRET CONTENT BLOCK
    ========================================================================== */
 
-.secret-content-taunt {
-  margin: 2rem;
-  padding: 0.2rem;
-  color: var(--color-discreet);
+.taunt-button {
+  text-align: center;
+  margin-top: 24px;
+  filter: blur(2px);
+  opacity: 0.5;
   transition:
-    background-color var(--transition),
-    color var(--transition);
-}
-
-.secret-content-taunt:hover,
-.secret-content-taunt:focus-within {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-}
-
-.secret-content-taunt .button {
-  background: none;
-  border: 2px solid var(--color-subtext);
-  margin: 0.5rem 0;
-  padding: 0.5rem 1rem;
+    filter var(--transition),
+    opacity var(--transition);
   cursor: pointer;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: inherit;
-  transition:
-    border var(--transition),
-    color var(--transition);
+  border: none;
+  animation: taunt-pulse 9s ease-in-out infinite;
 }
 
-.secret-content-taunt .button:hover,
-.secret-content-taunt .button:focus {
-  border-color: var(--color-primary);
+.taunt-cta {
+  color: var(--color-primary);
 }
+
+.taunt-text {
+  margin-left: 0.2rem;
+  color: var(--color-text);
+}
+
+.taunt-button:hover,
+.taunt-button:focus {
+  background-image: none !important;
+}
+
+@media (hover: hover) {
+  .taunt-button:hover,
+  .taunt-button:focus {
+    animation: none;
+    filter: blur(1px);
+    opacity: 0.95;
+  }
+}
+
+@keyframes taunt-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    filter: blur(3px);
+  }
+  50% {
+    opacity: 0.85;
+    filter: blur(1px);
+  }
+}
+
+/* ==========================================================================
+   Final corrections
+   ========================================================================== */
 
 /* === Fixes: Link primary color === */
 a {
