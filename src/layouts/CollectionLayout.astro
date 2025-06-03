@@ -1,10 +1,8 @@
 ---
-import Menu from '@/components/Menu.astro';
-import type { LayoutProps } from '@/types/layout';
-import DocumentLayout from './DocumentLayout.astro';
-import '@/styles/collection.css';
 import LangSwitcher from '@/components/LangSwitcher';
 import SidebarToggle from '@/components/SidebarToggle';
+import type { LayoutProps } from '@/types/layout';
+import DocumentLayout from './DocumentLayout.astro';
 
 const {
   title = 'Seemless Code',
@@ -40,12 +38,6 @@ const lang =
       <div class="markdown-body">
         <slot name="markdown-title" />
         <slot name="markdown-body" />
-      </div>
-
-      <div class="footer">
-        <div class="menu-wrapper">
-          <Menu lang={lang} />
-        </div>
       </div>
     </main>
   </div>

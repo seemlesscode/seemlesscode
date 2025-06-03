@@ -1,7 +1,7 @@
 ---
-slug: "manifesto"
-title: "Manifesto"
-lang: "en"
+slug: 'manifesto'
+title: 'Manifesto'
+lang: 'en'
 ---
 
 <p class="center-container">

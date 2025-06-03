@@ -1,8 +1,8 @@
 ---
-import ThemeSwitcher from "@/components/ThemeSwitcher";
-import PageLayout from "@/layouts/PageLayout.astro";
-import type { PageDataType } from "@/types/page";
-import { settings } from "./data/settings.astro";
+import ThemeSwitcher from '@/components/ThemeSwitcher';
+import PageLayout from '@/layouts/PageLayout.astro';
+import type { PageDataType } from '@/types/page';
+import { settings } from './data/settings.astro';
 
 const { title, description, lang, alternates } = settings.data as PageDataType;
 ---
@@ -11,13 +11,18 @@ const { title, description, lang, alternates } = settings.data as PageDataType;
   <h1>{title}</h1>
   <ul>
     <ThemeSwitcher
-      client:load
       labels={{
-        theme: "Thème",
-        color: "Couleur",
-        light: "Clair",
-        dark: "Sombre",
+        theme: 'Theme',
+        color: 'Color',
+        light: 'Light',
+        dark: 'Dark',
       }}
+      client:load
     />
   </ul>
+
+  <div class="secret-content-taunt">
+    <a href={`/${lang}/secret`} class="button"> Essaye ? </a>{' '}
+    <span style="margin-left: 0.2rem">de débloquer le contenu secret...</span>
+  </div>
 </PageLayout>

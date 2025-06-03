@@ -1,20 +1,32 @@
 ---
-import { getMenu } from "@/lib/menu";
+import { getMenu } from '@/lib/menu';
 
-const { lang = "en" } = Astro.props;
+const { lang = 'en' } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
-<div class="menu">
-  {
-    getMenu(lang).map(({ id, label, url }) => (
-      <a
-        id={id}
-        href={url}
-        class={`menu-button ${id === "settings" ? "settings" : ""}`}
-      >
-        <div class="circle" />
-        <span class="menu-label">{label}</span>
-      </a>
-    ))
-  }
+<div class="menu-wrapper">
+  <div class="menu">
+    {
+      getMenu(lang).map(({ id, label, url }) => {
+        const isActive = currentPath === url;
+        const { aria, className } =
+          id === 'settings'
+            ? { aria: 'settings', className: 'settings' }
+            : { aria: 'page', className: '' };
+
+        return (
+          <a
+            id={id}
+            href={url}
+            {...(isActive ? { 'aria-current': 'page' } : {})}
+            class={`menu-button ${id === 'settings' ? 'settings' : ''}`}
+          >
+            <div class="circle" />
+            <span class="menu-label">{label}</span>
+          </a>
+        );
+      })
+    }
+  </div>
 </div>

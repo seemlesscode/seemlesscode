@@ -1,18 +1,18 @@
 ---
-import LangClientInit from "@/components/LangClientInit";
-import SEO from "@/components/SEO.astro";
-import ThemeClientInit from "@/components/ThemeClientInit";
-import type { LayoutProps } from "@/types/layout";
-import "@/styles/global.css";
-import "@/styles/easter-egg.css";
+import LangClientInit from '@/components/LangClientInit';
+import SEO from '@/components/SEO.astro';
+import ThemeClientInit from '@/components/ThemeClientInit';
+import type { LayoutProps } from '@/types/layout';
+import '@/styles/global.css';
+import Menu from '@/components/Menu.astro';
 
 const {
-  lang = "en",
-  title = "Seemless Code",
-  description = "",
+  lang = 'en',
+  title = 'Seemless Code',
+  description = '',
   alternates = {
-    en: "/",
-    fr: "/",
+    en: '/',
+    fr: '/',
   },
   canonical,
 }: LayoutProps = Astro.props;
@@ -29,10 +29,10 @@ const {
     <script>
       (function () {
         try {
-          const state = localStorage.getItem("sidebar");
-          const shouldOpen = state === "open" || state === null;
+          const state = localStorage.getItem('sidebar');
+          const shouldOpen = state === 'open' || state === null;
           if (shouldOpen) {
-            document.body.classList.add("drawer-open");
+            document.body.classList.add('drawer-open');
           }
         } catch (_) {}
       })();
@@ -41,5 +41,9 @@ const {
     <ThemeClientInit client:load />
 
     <slot />
+
+    <div class="footer">
+      <Menu lang={lang} />
+    </div>
   </body>
 </html>
