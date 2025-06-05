@@ -1,7 +1,13 @@
-import { useEffect } from "preact/hooks";
-import { useUnlockedSync } from "./useUnlocked";
+import { useEffect } from 'preact/hooks';
+import { settings } from '@/pages/en/data/settings.astro';
+import { Lang } from '@/types/base';
+import { useUnlockedSync } from './useUnlocked';
 
-export function useKonamiCodeMobile() {
+interface Props {
+  lang: Lang;
+}
+
+export function useKonamiCodeMobile({ lang }: Props) {
   const { unlocked, updateUnlocked } = useUnlockedSync();
 
   useEffect(() => {
@@ -10,16 +16,16 @@ export function useKonamiCodeMobile() {
     }
 
     const sequence = [
-      "up",
-      "up",
-      "down",
-      "down",
-      "left",
-      "right",
-      "left",
-      "right",
-      "tap",
-      "tap",
+      'up',
+      'up',
+      'down',
+      'down',
+      'left',
+      'right',
+      'left',
+      'right',
+      'tap',
+      'tap',
     ];
     let current = 0;
     let startX = 0;
@@ -36,14 +42,14 @@ export function useKonamiCodeMobile() {
       const dx = touch.clientX - startX;
       const dy = touch.clientY - startY;
 
-      let direction = "";
+      let direction = '';
 
       if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
-        direction = "tap";
+        direction = 'tap';
       } else if (Math.abs(dx) > Math.abs(dy)) {
-        direction = dx > 0 ? "right" : "left";
+        direction = dx > 0 ? 'right' : 'left';
       } else {
-        direction = dy > 0 ? "down" : "up";
+        direction = dy > 0 ? 'down' : 'up';
       }
 
       if (direction === sequence[current]) {
@@ -51,18 +57,19 @@ export function useKonamiCodeMobile() {
         if (current === sequence.length) {
           updateUnlocked(true);
           current = 0;
+          window.location.href = settings.data.alternates[lang];
         }
       } else {
         current = 0;
       }
     };
 
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchend", handleTouchEnd);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
 
     return () => {
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
     };
   }, []);
 }

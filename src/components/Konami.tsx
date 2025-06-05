@@ -1,9 +1,18 @@
 import { useKonamiCode } from '@/hooks/useKonamiCode';
 import { useKonamiCodeMobile } from '@/hooks/useKonamiCodeMobile';
+import { useUnlockedSync } from '@/hooks/useUnlocked';
+import { Lang } from '@/types/base';
+import KonamiModal from './KonamiModal';
 
-export default function Konami() {
-  useKonamiCode();
-  useKonamiCodeMobile();
+interface Props {
+  lang: Lang;
+}
 
-  return null;
+export default function Konami({ lang }: Props) {
+  useKonamiCode({ lang });
+  useKonamiCodeMobile({ lang });
+
+  const { unlocked } = useUnlockedSync();
+
+  return <>{unlocked && <KonamiModal lang={lang} />}</>;
 }
