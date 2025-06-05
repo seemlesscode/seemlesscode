@@ -10,10 +10,6 @@ const currentPath = Astro.url.pathname;
     {
       getMenu(lang).map(({ id, label, url }) => {
         const isActive = currentPath === url;
-        const { aria, className } =
-          id === 'settings'
-            ? { aria: 'settings', className: 'settings' }
-            : { aria: 'page', className: '' };
 
         return (
           <a

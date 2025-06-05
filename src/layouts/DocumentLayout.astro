@@ -1,6 +1,7 @@
 ---
 import LangClientInit from '@/components/LangClientInit';
 import SEO from '@/components/SEO.astro';
+import SwipeNavigation from '@/components/SwipeNavigation';
 import ThemeClientInit from '@/components/ThemeClientInit';
 import type { LayoutProps } from '@/types/layout';
 import '@/styles/global.css';
@@ -40,6 +41,7 @@ const {
     </script>
     <LangClientInit client:load />
     <ThemeClientInit client:load />
+    <SwipeNavigation lang={lang} client:load />
     <Konami lang={lang} client:load />
 
     <slot />

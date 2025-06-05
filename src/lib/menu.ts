@@ -1,11 +1,14 @@
 import type { Lang } from '@/types/base';
 
+type MenuId = 'about' | 'projects' | 'contact' | 'settings';
+
 type MenuItem = {
-  id: 'about' | 'projects' | 'contact' | 'settings';
+  id: MenuId;
   label: string;
   url: string;
 };
 
+// Order is important (swipe navigation logic)
 export function getMenu(lang: Lang): MenuItem[] {
   const fr: MenuItem[] = [
     { id: 'about', label: 'À propos', url: '/fr/a-propos/manifeste' },
