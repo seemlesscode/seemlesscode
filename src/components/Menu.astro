@@ -1,5 +1,6 @@
 ---
 import { getMenu } from '@/lib/menu';
+import { normalize } from '@/utils/normalize';
 
 const { lang = 'en' } = Astro.props;
 const currentPath = Astro.url.pathname;
@@ -9,7 +10,7 @@ const currentPath = Astro.url.pathname;
   <div class="menu">
     {
       getMenu(lang).map(({ id, label, url }) => {
-        const isActive = currentPath === url;
+        const isActive = normalize(currentPath) === normalize(url);
 
         return (
           <a
