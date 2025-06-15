@@ -1,6 +1,6 @@
 ---
 import LangSwitcher from '@/components/LangSwitcher';
-import SidebarToggle from '@/components/SidebarToggle';
+import SidebarIsland from '@/components/SidebarIsland';
 import type { LayoutProps } from '@/types/layout';
 import DocumentLayout from './DocumentLayout.astro';
 
@@ -24,21 +24,14 @@ const lang =
       <LangSwitcher {alternates} client:load />
     </div>
   </div>
+  <SidebarIsland client:load>
+    <slot name="sidebar" />
+  </SidebarIsland>
 
-  <div class="collection-layout">
-    <div id="sidebar" class="sidebar">
-      <div class="sidebar-header">
-        <SidebarToggle client:load />
-      </div>
-
-      <slot name="sidebar" />
+  <main id="main-content">
+    <div class="markdown-body">
+      <slot name="markdown-title" />
+      <slot name="markdown-body" />
     </div>
-
-    <main id="main-content">
-      <div class="markdown-body">
-        <slot name="markdown-title" />
-        <slot name="markdown-body" />
-      </div>
-    </main>
-  </div>
+  </main>
 </DocumentLayout>
