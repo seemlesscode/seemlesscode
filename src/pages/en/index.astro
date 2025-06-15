@@ -1,15 +1,15 @@
 ---
-import EmptyLayout from "@/layouts/EmptyLayout.astro";
+import PageLayout from '@/layouts/PageLayout.astro';
+import type { PageDataType } from '@/types/page';
+import { about } from './data/about.astro';
 
-const title = "Seemless Code";
-const description = "Empty index de Seemless Code";
-const lang = "en";
-const alternates = { fr: "/fr", en: "/en" };
+const { title, description, lang, alternates } = about.data as PageDataType;
 ---
 
-<EmptyLayout
-  lang={lang}
-  title={title}
-  description={description}
-  alternates={alternates}
-/>
+<PageLayout {title} {description} {lang} {alternates}>
+  <p class="blurry about">
+    To create from the shadows.<br />
+    To think from the margins.<br />
+    To make visible what is not.<br />
+  </p>
+</PageLayout>

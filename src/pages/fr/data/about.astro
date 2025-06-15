@@ -1,17 +1,15 @@
 ---
-import type { DisplayDataType } from "@/types/page";
+import type { DisplayDataType } from '@/types/page';
 
 export const about: DisplayDataType = {
-  type: "slug",
+  type: 'slug',
   data: {
-    title: "À propos",
+    title: 'À propos',
     description: "Qui je suis, ce que je fais, Et où j'ai travaillé.",
-    lang: "fr",
-    alternates: { en: "/en/about/manifesto", fr: "/fr/a-propos/manifeste" },
+    lang: 'fr',
+    alternates: { en: '/en', fr: '/fr' },
     slugs: {
-      manifeste: { en: "/en/about/manifesto", fr: "/fr/a-propos/manifeste" },
-      manifesto: { en: "/en/about/manifesto", fr: "/fr/a-propos/manifeste" },
-      bio: { en: "/en/about/bio", fr: "/fr/a-propos/bio" },
+      bio: { en: '/en/about/bio', fr: '/fr/a-propos/bio' },
     },
   },
 };

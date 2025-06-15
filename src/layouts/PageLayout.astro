@@ -1,5 +1,4 @@
 ---
-import LangSwitcher from '@/components/LangSwitcher';
 import type { LayoutProps } from '@/types/layout';
 import DocumentLayout from './DocumentLayout.astro';
 
@@ -18,12 +17,6 @@ const lang =
 ---
 
 <DocumentLayout {title} {description} {lang} {alternates} {canonical}>
-  <div class="header">
-    <div class="header-element">
-      <LangSwitcher {alternates} client:load />
-    </div>
-  </div>
-
   <main>
     <div class="content">
       <slot />

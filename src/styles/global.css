@@ -690,7 +690,7 @@ body:not(.hydrated) * {
 }
 
 /* ==========================================================================
-   Konami modal
+   KONAMI MODAL
    ========================================================================== */
 
 .konami-backdrop {
@@ -778,7 +778,42 @@ body:not(.hydrated) * {
 }
 
 /* ==========================================================================
-   Final corrections
+   ABOUT
+   ========================================================================== */
+
+.blurry {
+  filter: blur(1px); /* start slightly blurry */
+  opacity: 0.95; /* optional: slight fade */
+  transition:
+    filter var(--transition),
+    opacity var(--transition);
+
+  animation: blur-to-focus 12s ease-in-out forwards;
+}
+
+@keyframes blur-to-focus {
+  from {
+    filter: blur(0.6px);
+    opacity: 0.95;
+  }
+  to {
+    filter: blur(0.2px);
+    opacity: 0.98;
+  }
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - var(--header-height) - var(--footer-height) - 10rem);
+  width: 100%;
+  padding: 10rem 0 0 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   FINAL CORRECTIONS
    ========================================================================== */
 
 /* === Fixes: Link primary color === */
