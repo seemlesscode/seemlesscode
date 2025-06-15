@@ -8,6 +8,9 @@ import '@/styles/global.css';
 import Konami from '@/components/Konami';
 import LangSwitcher from '@/components/LangSwitcher';
 import Menu from '@/components/Menu.astro';
+import IconGithub from '@/svg/IconGithub';
+import IconLinkedIn from '@/svg/IconLinkedIn';
+import IconMail from '@/svg/IconMail';
 
 const {
   lang = 'en',
@@ -47,6 +50,29 @@ const {
 
     <div class="header">
       <div class="header-element">
+        <a
+          href="https://www.linkedin.com/in/tarek-dinkespiler/"
+          target="_blank"
+          class="header-icon"
+        >
+          <IconLinkedIn />
+        </a>
+        <a
+          href="https://github.com/seemlesscode"
+          target="_blank"
+          class="header-icon"
+        >
+          <IconGithub />
+        </a>
+        <a
+          href="mailto:tarek@seemlesscode.com"
+          target="_blank"
+          class="header-icon"
+        >
+          <IconMail />
+        </a>
+      </div>
+      <div class="header-element reverse">
         <LangSwitcher {alternates} client:load />
       </div>
     </div>

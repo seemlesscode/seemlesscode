@@ -1,4 +1,4 @@
-import { useLangSync } from "@/hooks/useLang";
+import { useLangSync } from '@/hooks/useLang';
 
 interface Props {
   alternates: {
@@ -10,31 +10,36 @@ interface Props {
 export default function LangSwitcher({ alternates }: Props) {
   const { lang, updateLang } = useLangSync();
 
+  const className = (isCurrentLang: boolean) => {
+    const active = isCurrentLang ? 'lang-active' : 'lang-inactive';
+    return `header-lang ${active}`;
+  };
+
   return (
-    <li>
+    <>
       <a
         href={alternates.fr}
-        class={lang === "fr" ? "lang-active" : "lang-inactive"}
+        class={className(lang === 'fr')}
         onClick={(e) => {
           e.preventDefault();
-          updateLang("fr");
+          updateLang('fr');
           window.location.href = alternates.fr;
         }}
       >
         Fr
       </a>
-      /
+      .
       <a
         href={alternates.en}
-        class={lang === "en" ? "lang-active" : "lang-inactive"}
+        class={className(lang === 'en')}
         onClick={(e) => {
           e.preventDefault();
-          updateLang("en");
+          updateLang('en');
           window.location.href = alternates.en;
         }}
       >
         En
       </a>
-    </li>
+    </>
   );
 }

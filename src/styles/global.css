@@ -156,18 +156,18 @@ a:hover {
 }
 
 .lang-active {
-  color: var(--color-primary);
+  color: var(--color-text);
   pointer-events: none;
   cursor: default;
 }
 
 .lang-inactive {
-  color: var(--color-text);
+  color: var(--color-bg);
   transition: color var(--transition);
 }
 
 .lang-inactive:hover {
-  color: var(--color-primary);
+  color: var(--color-text);
 }
 
 /* ==========================================================================
@@ -238,11 +238,45 @@ a:hover {
     justify-content: end;
     align-items: center;
     width: 100%;
+    text-decoration: none;
   }
 }
 
 .header-element {
-  padding: 1rem;
+  border: var(--color-primary) solid 1px;
+}
+
+.header-element a {
+  text-decoration: none !important;
+  background-image: none !important;
+  background-size: 0 !important;
+}
+
+.header-icon {
+  display: inline-block;
+  color: var(--color-text);
+  padding: 0.5rem 1rem;
+}
+
+.header-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.header-lang {
+  height: 16px;
+}
+
+.reverse {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.reverse:hover {
+  cursor: pointer;
+  background-color: var(--color-primary);
+  color: var(--color-text);
 }
 
 .footer {
