@@ -373,7 +373,6 @@ a:hover {
   max-width: 960px;
   padding: 0 1rem;
   text-align: left;
-  overflow: auto;
 }
 
 .markdown-title {
@@ -553,68 +552,48 @@ body.drawer-open .center-container {
   z-index: 10;
 }
 
+@media (max-width: 768px) {
+  .sidebar {
+    top: var(--mobile-header-height);
+    height: calc(
+      100vh - var(--mobile-header-height) - var(--mobile-footer-height)
+    );
+  }
+}
+
 main {
-  flex: 1;
-  overflow: visible;
-  height: 100%;
-  width: 100%;
+  position: relative;
   box-sizing: border-box;
-  padding-bottom: var(--footer-height);
+  height: 100%;
 }
 
 #main-content {
-  width: 100%;
-  max-width: 100vw;
-  padding: 0 3vw;
+  overflow-y: auto;
+
   display: flex;
   justify-content: center;
+
+  height: calc(100vh - var(--footer-height));
+  width: 100%;
+  max-width: 100vw;
+
+  padding: var(--header-height) 3vw 0 3vw;
+
   transition: margin var(--transition);
-  overflow-y: auto;
-  height: calc(100vh - var(--header-height) - var(--footer-height));
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   overscroll-behavior: contain;
-  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
+#main-content::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: var(--mobile-header-height);
-    left: 0;
-    height: calc(
-      100vh - var(--mobile-header-height) - var(--mobile-footer-height)
-    );
-    width: var(--sidebar-width);
-    margin-left: 20px;
-    background-color: var(--color-sidebar);
-    backdrop-filter: blur(2px);
-    transform: translateX(-100%);
-    border-right: 1px solid var(--color-discreet);
-    transition: transform var(--transition);
-    z-index: 10;
-  }
-
-  main {
-    flex: 1;
-    overflow: visible;
-    width: 100%;
-    box-sizing: border-box;
-    height: 100%;
-    padding-bottom: var(--mobile-footer-height);
-  }
-
   #main-content {
-    width: 100%;
-    max-width: 100vw;
-    padding: 0 3vw;
-    display: flex;
-    justify-content: center;
-    transition: margin var(--transition);
-    overflow-y: auto;
-    height: calc(
-      100vh - var(--mobile-header-height) - var(--mobile-footer-height)
-    );
-    overscroll-behavior: contain;
-    scrollbar-gutter: stable;
+    height: calc(100vh - var(--mobile-footer-height));
   }
 }
 
