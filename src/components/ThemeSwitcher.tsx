@@ -1,7 +1,9 @@
 import { useThemeSync } from '@/hooks/useTheme';
 import { useUnlockedSync } from '@/hooks/useUnlocked';
+import { Lang } from '@/types/base';
 
 interface ThemeSwitcherProps {
+  lang: Lang;
   labels: {
     theme: string;
     light: string;
@@ -10,7 +12,7 @@ interface ThemeSwitcherProps {
   };
 }
 
-export default function ThemeSwitcher({ labels }: ThemeSwitcherProps) {
+export default function ThemeSwitcher({ labels, lang }: ThemeSwitcherProps) {
   const { theme, color, updateTheme, updateColor } = useThemeSync();
   const { unlocked } = useUnlockedSync(false);
 
@@ -23,44 +25,44 @@ export default function ThemeSwitcher({ labels }: ThemeSwitcherProps) {
 
   return (
     <>
-      <li>
+      <div class="theme-options">
         {labels.theme}:
-        <div class="theme-options">
-          {themes.map(({ label, value }) => (
-            <button
-              key={value}
-              onClick={() => updateTheme(value)}
-              aria-pressed={theme === value}
-              style={
-                theme === value
-                  ? {
-                      borderColor: 'var(--color-primary)',
-                      color: 'var(--color-primary)',
-                    }
-                  : undefined
-              }
-            >
-              {label}
-            </button>
+        {themes.map(({ label, value }) => (
+          <button
+            key={value}
+            onClick={() => updateTheme(value)}
+            aria-pressed={theme === value}
+            style={
+              theme === value
+                ? {
+                    borderColor: 'var(--color-primary)',
+                    color: 'var(--color-primary)',
+                  }
+                : undefined
+            }
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      {unlocked ? (
+        <div class="color-options">
+          {labels.color}:
+          {colors.map((c) => (
+            <div
+              key={c}
+              class={`color-choice-${c.substring(1)}`}
+              data-active={color === c}
+              style={{ backgroundColor: c }}
+              onClick={() => updateColor(c)}
+            />
           ))}
         </div>
-      </li>
-
-      {unlocked && (
-        <li>
-          {labels.color}:
-          <div class="color-options">
-            {colors.map((c) => (
-              <div
-                key={c}
-                class={`color-choice-${c.substring(1)}`}
-                data-active={color === c}
-                style={{ backgroundColor: c }}
-                onClick={() => updateColor(c)}
-              />
-            ))}
-          </div>
-        </li>
+      ) : (
+        <a href={`/${lang}/secret`} class="taunt-button">
+          <span class="taunt-cta">TRY ?</span>
+          <span class="taunt-text">and unlock secret content...</span>
+        </a>
       )}
     </>
   );

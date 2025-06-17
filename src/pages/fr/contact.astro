@@ -1,22 +1,26 @@
 ---
-import PageLayout from "@/layouts/PageLayout.astro";
-import type { PageDataType } from "@/types/page";
-import { contact } from "./data/contact.astro";
+import PageLayout from '@/layouts/PageLayout.astro';
+import type { PageDataType } from '@/types/page';
+import { contact } from './data/contact.astro';
 
 const { title, description, lang, alternates } = contact.data as PageDataType;
 ---
 
 <PageLayout {title} {description} {lang} {alternates}>
-  <h1>{title}</h1>
-  <ul>
-    <li><a href="mailto:tarek@seemlesscode.com">tarek@seemlesscode.com</a></li>
-    <li>
-      <a href="https://github.com/seemlesscode" target="_blank">GitHub</a>
-    </li>
-    <li>
-      <a href="https://www.linkedin.com/in/tarek-dinkespiler/" target="_blank"
-        >LinkedIn
-      </a>
-    </li>
-  </ul>
+  <div class="center-container">
+    <h1>{title}</h1>
+    <ul>
+      <li>
+        <a href="mailto:tarek@seemlesscode.com">tarek@seemlesscode.com</a>
+      </li>
+      <li>
+        <a href="https://github.com/seemlesscode" target="_blank">GitHub</a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/tarek-dinkespiler/" target="_blank"
+          >LinkedIn
+        </a>
+      </li>
+    </ul>
+  </div>
 </PageLayout>
