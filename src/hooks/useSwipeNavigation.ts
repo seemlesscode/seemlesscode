@@ -29,8 +29,6 @@ export function useSwipeNavigation({ lang }: Props) {
     const handleSwipe = () => {
       const currentPath = window.location.pathname;
       const index = menu.findIndex((m) => currentPath.startsWith(m.url));
-      console.log({ currentPath });
-      console.log({ menu });
       if (index === -1) return;
 
       const dx = touchEndX - touchStartX;

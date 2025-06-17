@@ -224,25 +224,37 @@ a:hover {
    ========================================================================== */
 
 .header {
-  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   display: flex;
   justify-content: end;
   align-items: center;
+  height: var(--header-height);
   width: 100%;
+  text-decoration: none;
+  background-color: var(--color-backdrop);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 @media (max-width: 768px) {
   .header {
     height: var(--mobile-header-height);
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    width: 100%;
-    text-decoration: none;
   }
 }
 
+.header-row {
+  height: 36px;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
 .header-element {
+  background-color: var(--color-bg);
   border: var(--color-primary) solid 1px;
 }
 
@@ -816,8 +828,8 @@ body:not(.hydrated) * {
    ========================================================================== */
 
 .blurry {
-  filter: blur(1px); /* start slightly blurry */
-  opacity: 0.95; /* optional: slight fade */
+  filter: blur(1px);
+  opacity: 0.95;
   transition:
     filter var(--transition),
     opacity var(--transition);

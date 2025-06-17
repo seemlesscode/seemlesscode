@@ -5,12 +5,9 @@ import SwipeNavigation from '@/components/SwipeNavigation';
 import ThemeClientInit from '@/components/ThemeClientInit';
 import type { LayoutProps } from '@/types/layout';
 import '@/styles/global.css';
+import HeaderIsland from '@/components/HeaderIsland';
 import Konami from '@/components/Konami';
-import LangSwitcher from '@/components/LangSwitcher';
 import Menu from '@/components/Menu.astro';
-import IconGithub from '@/svg/IconGithub';
-import IconLinkedIn from '@/svg/IconLinkedIn';
-import IconMail from '@/svg/IconMail';
 
 const {
   lang = 'en',
@@ -45,42 +42,17 @@ const {
     </script>
     <LangClientInit client:load />
     <ThemeClientInit client:load />
-    <SwipeNavigation lang={lang} client:load />
-    <Konami lang={lang} client:load />
+    <SwipeNavigation {lang} client:load />
+    <Konami {lang} client:load />
 
-    <div class="header">
-      <div class="header-element">
-        <a
-          href="https://www.linkedin.com/in/tarek-dinkespiler/"
-          target="_blank"
-          class="header-icon"
-        >
-          <IconLinkedIn />
-        </a>
-        <a
-          href="https://github.com/seemlesscode"
-          target="_blank"
-          class="header-icon"
-        >
-          <IconGithub />
-        </a>
-        <a
-          href="mailto:tarek@seemlesscode.com"
-          target="_blank"
-          class="header-icon"
-        >
-          <IconMail />
-        </a>
-      </div>
-      <div class="header-element reverse">
-        <LangSwitcher {alternates} client:load />
-      </div>
-    </div>
+    <HeaderIsland {alternates} client:load />
 
-    <slot />
+    <main>
+      <slot />
+    </main>
 
     <div class="footer">
-      <Menu lang={lang} />
+      <Menu {lang} />
     </div>
   </body>
 </html>
