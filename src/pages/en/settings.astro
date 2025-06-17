@@ -8,21 +8,23 @@ const { title, description, lang, alternates } = settings.data as PageDataType;
 ---
 
 <PageLayout {title} {description} {lang} {alternates}>
-  <h1>{title}</h1>
-  <ul>
-    <ThemeSwitcher
-      labels={{
-        theme: 'Theme',
-        color: 'Color',
-        light: 'Light',
-        dark: 'Dark',
-      }}
-      client:load
-    />
-  </ul>
+  <div class="center-container">
+    <h1>{title}</h1>
+    <ul>
+      <ThemeSwitcher
+        labels={{
+          theme: 'Theme',
+          color: 'Color',
+          light: 'Light',
+          dark: 'Dark',
+        }}
+        client:load
+      />
+    </ul>
 
-  <a href={`/${lang}/secret`} class="taunt-button">
-    <span class="taunt-cta">TRY ?</span>
-    <span class="taunt-text">and unlock secret content...</span>
-  </a>
+    <a href={`/${lang}/secret`} class="taunt-button">
+      <span class="taunt-cta">TRY ?</span>
+      <span class="taunt-text">and unlock secret content...</span>
+    </a>
+  </div>
 </PageLayout>
